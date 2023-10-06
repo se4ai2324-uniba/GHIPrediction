@@ -13,6 +13,12 @@ The NSRDB ([Sengupta et al., 2018](https://doi.org/10.1016/j.rser.2018.03.003)) 
 
 
 ## Data Preprocessing:
+In order to use the dataset, we should first clean the data and manipulate it, in particular: the most relevant features are selected ignoring the rest. These selected features, namely temperature, dni and relative humidity 
+are the ones that are most correlated with GHI.
+Then the rows with GHI equal to 0 are deleted, because these represent the night time, in which there is no solar irradiance, so it is not useful for our prediction.
+Following this, any missing data points (NaN values) are replaced by zeros. Finally, a uniform scaling operation is applied to the data using the "robust scaler", that helps with the prediction. 
+The resulting dataset, after the Pre-Processing, is presented in the table provided.
+
 ....
 | Temperature  | DNI | GHI | Relative Humidity %
 | --------- |:-------------:|:-------------:|:-------------:|
