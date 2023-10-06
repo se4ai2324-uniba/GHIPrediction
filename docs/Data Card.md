@@ -4,7 +4,7 @@
 The dataset contains three years of measuraments at 30 minutes intervals from 2017 to 2019 in Bari. The data gathered concerns Humidity,
 Temperature, Global Horizontal Irradiance (GHI) and Direct Normal Irradiance (DNI).
 
--inserisci immagine qui-
+![Dataset](DatasetView.JPG)
 
 
 ## Data Source:
