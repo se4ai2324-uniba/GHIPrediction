@@ -19,7 +19,7 @@ Then the rows with GHI equal to 0 are deleted, because these represent the night
 Following this, any missing data points (NaN values) are replaced by zeros. Finally, a uniform scaling operation is applied to the data using the "robust scaler", that helps with the prediction. 
 The resulting dataset, after the Pre-Processing, is presented in the table provided.
 
-....
+
 | Temperature  | DNI | GHI | Relative Humidity %
 | --------- |:-------------:|:-------------:|:-------------:|
 | 7.2      | 179    | 17     | 71.14 | 
