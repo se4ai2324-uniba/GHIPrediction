@@ -39,5 +39,5 @@ In order to find the best hyperparameters it has been used the `GridSearchCV` th
 ## Performance:
 It can be seen from the R2 and RMSE results that the best model is the XGBooster. The Random Forest and the KNR give good results but both are inferior to the XGBooster, and in particular the Random Forest is the slowest of the three. Linear regression on the other hand gives us the worst results being a very simple model for the type of problem.
 
-![R2](R2.JPG)
-![RMSE](RMSE.JPG)
+![R2](R2.PNG)
+![RMSE](RMSE.PNG)
