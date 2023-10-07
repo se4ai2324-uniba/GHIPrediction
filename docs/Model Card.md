@@ -26,12 +26,18 @@ The System uses **Scikit-learn** framework for preprocessing the data and for im
 - KNeighbors Regressor.
 
 ## Evaluation Metrics:
-The System will be evaluated with R2 and RMSE metrics. \
-R2 assesses how well the model explains variance in the data, while RMSE measures the average size of prediction errors. \
+The System will be evaluated with **R2** and **RMSE** metrics.
+- R2 assesses how well the model explains variance in the data;
+- RMSE measures the average size of prediction errors.
+
 These metrics are often used together to evaluate the overall performance of regression models, with R2 indicating goodness of fit and RMSE indicating the accuracy of predictions.
 
-## Hyperparameter:
-.....
+## Hyperparameters:
+Hyperparameters tuning allows to tweak the model performance for optimal results. \
+In order to find the best hyperparameters it has been used the `GridSearchCV` that exhausts all the possibile combination between them, splitting the dataset in 10 folds.
+- XGBooster: `learning_rate: 0.1`, `max_depth: 5`, `n_estimators: 100`;
+- KNeighbors Regressor: `n_neighbors: 9`, `metric: euclidean`;
+- Random Forest: `max_depth: 6`, `n_estimators: 140`; 
 
 ## Performance:
 ......
