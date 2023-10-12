@@ -1,8 +1,5 @@
 # GHI PREDICTION
 
-## Project Title: 
-GHI-Prediction
-
 ## Model Description:
 The system will predict the Global Horizontal Irradiance (**GHI**) – *the amount of solar energy from the sun hitting a specific location*. \
 It will do this by analyzing various physical data, including temperature, humidity, and Direct Normal Irradiance (**DNI**).
@@ -40,5 +37,8 @@ In order to find the best hyperparameters it has been used the `GridSearchCV` th
 - Random Forest: `max_depth: 6`, `n_estimators: 140`; 
 
 ## Performance:
-......
+It can be seen from the R2 and RMSE results that the best model is the XGBooster. The Random Forest and the KNR give good results but both are inferior to the XGBooster, and in particular the Random Forest is the slowest of the three. Linear regression on the other hand gives us the worst results being a very simple model for the type of problem.
 
+![R2](R2.JPG)
+
+![RMSE](RMSE.JPG)
