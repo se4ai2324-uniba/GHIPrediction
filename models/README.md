@@ -5,7 +5,7 @@ The system will predict the Global Horizontal Irradiance (**GHI**) – *the amou
 It will do this by analyzing various physical data, including temperature, humidity, and Direct Normal Irradiance (**DNI**).
 
 ## Data card:
-Information about our data can be found [here](https://github.com/se4ai2324-uniba/GHIPrediction/blob/main/docs/README.md).
+Information about our data can be found [here](https://github.com/se4ai2324-uniba/GHIPrediction/blob/main/data/README.md).
 
 ## Intended Use:
 The prediction is essential for optimizing solar energy systems, helping them operate more efficiently. \
