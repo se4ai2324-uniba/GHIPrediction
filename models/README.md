@@ -4,12 +4,8 @@
 The system will predict the Global Horizontal Irradiance (**GHI**) – *the amount of solar energy from the sun hitting a specific location*. \
 It will do this by analyzing various physical data, including temperature, humidity, and Direct Normal Irradiance (**DNI**).
 
-## Contributors:
-- Francesco Didio [<f.didio2@studenti.uniba.it>];
-- Giovanni Federico Poli [<g.poli4@studenti.uniba.it>]; 
-- Donato Francioso [<d.francioso7@studenti.uniba.it>];
-
-Belonging to the organization **se4ai2324-uniba**.
+## Data card:
+Information about our data can be found [here](https://github.com/se4ai2324-uniba/GHIPrediction/blob/main/docs/README.md).
 
 ## Intended Use:
 The prediction is essential for optimizing solar energy systems, helping them operate more efficiently. \
@@ -39,6 +35,15 @@ In order to find the best hyperparameters it has been used the `GridSearchCV` th
 ## Performance:
 It can be seen from the R2 and RMSE results that the best model is the XGBooster. The Random Forest and the KNR give good results but both are inferior to the XGBooster, and in particular the Random Forest is the slowest of the three. Linear regression on the other hand gives us the worst results being a very simple model for the type of problem.
 
-![R2](R2.JPG)
+| Metrics |Random Forest | KNR | XGBooster | Linear Regression
+|:-------------: |--------- |:-------------:|:-------------:|:-------------:|
+|**R2** | 0.82      | 0.81    | **0.83**     | 0.75 | 
+|**RMSE** | 123.46      | 124.62    | **119.51**     | 142.85 | 
 
-![RMSE](RMSE.JPG)
+
+## Contributors:
+- Francesco Didio [<f.didio2@studenti.uniba.it>];
+- Giovanni Federico Poli [<g.poli4@studenti.uniba.it>]; 
+- Donato Francioso [<d.francioso7@studenti.uniba.it>];
+
+Belonging to the organization **se4ai2324-uniba**.
