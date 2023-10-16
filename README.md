@@ -1,5 +1,4 @@
 # GHI PREDICTION
-==============================
 
 ## System Description:
 The system will predict the Global Horizontal Irradiance (**GHI**) – *the amount of solar energy from the sun hitting a specific location*. \
