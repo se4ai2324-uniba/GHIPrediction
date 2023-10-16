@@ -1,7 +1,21 @@
-GHIPrediction
-==============================
+# GHI PREDICTION
 
-The system will predict the Global Horizontal Irradiance (GHI) – the amount of solar energy from the sun hitting a specific location.
+## System Description:
+The system will predict the Global Horizontal Irradiance (**GHI**) – *the amount of solar energy from the sun hitting a specific location*. \
+It will do this by analyzing various physical data, including temperature, humidity, and Direct Normal Irradiance (**DNI**).
+Information about our models can be foud [here](https://github.com/se4ai2324-uniba/GHIPrediction/blob/main/models/README.md).
+
+## Data card:
+Information about our data can be found [here](https://github.com/se4ai2324-uniba/GHIPrediction/blob/main/data/README.md).
+
+
+## Contributors:
+- Francesco Didio [<f.didio2@studenti.uniba.it>];
+- Giovanni Federico Poli [<g.poli4@studenti.uniba.it>]; 
+- Donato Francioso [<d.francioso7@studenti.uniba.it>];
+
+Belonging to the organization **se4ai2324-uniba**.
+
 
 Project Organization
 ------------
