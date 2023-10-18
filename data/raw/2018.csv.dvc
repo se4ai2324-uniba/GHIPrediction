@@ -1,0 +1,5 @@
+outs:
+- md5: 36bb9068f9b05cf83723261887faa138
+  size: 713500
+  hash: md5
+  path: 2018.csv
