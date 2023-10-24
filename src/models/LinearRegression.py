@@ -3,6 +3,7 @@ from train_model import x_train, y_train, x_test, y_test
 from sklearn.model_selection import cross_val_score
 from train_model import predictAndResults, metrics
 import pickle
+from train_model import stampa, predictAndResults
 
 class Linear:
 
@@ -21,9 +22,16 @@ class Linear:
         lr = Linear()
         modello= lr.trainLinear()
         lr.save_model(modello)
+        return modello
+
+    def testModel(self, model):
+        risultati = predictAndResults(model, x_test, y_test)
+        stampa(risultati, "Linear Regression")
+
 
 lr = Linear()
-lr.trainModel()
+best = lr.trainModel()
+lr.testModel(best)
 
 
 

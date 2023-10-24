@@ -37,7 +37,10 @@ def metrics(test, prediction):
   result = []
   result.append(r2_score(test, prediction))
   result.append(math.sqrt(mean_squared_error(test, prediction)))
-  result.append(mean_absolute_error(test, prediction))
-  print(result)
   return result
+
+def stampa(arr, name):
+  print("The result of prediction on x_test of " + name + " are:")
+  print("Root Mean Squared Error: ", arr[1])
+  print("R2: ", arr[0])
 

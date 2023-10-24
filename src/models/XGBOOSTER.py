@@ -2,6 +2,7 @@ import xgboost as xg
 from train_model import bestHyper
 from train_model import x_train, y_train, x_test, y_test
 import pickle
+from train_model import  predictAndResults, stampa
 
 class XGBooster:
 
@@ -24,10 +25,16 @@ class XGBooster:
 
     def trainModel(self):
         xgb = XGBooster()
-        modello, _ = xgb.trainXGBoost()
+        modello, best  = xgb.trainXGBoost()
         xgb.save_model(modello)
+        return best
+
+    def testModel(self, model):
+        risultati = predictAndResults(model, x_test, y_test)
+        stampa(risultati, "XGBooster")
+
 
 xgb = XGBooster()
-xgb.trainModel()
-        
+best = xgb.trainModel()
+xgb.testModel(best)
 
