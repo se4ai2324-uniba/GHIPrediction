@@ -32,6 +32,6 @@ class Linear:
 lr = Linear()
 best = lr.trainModel()
 lr.testModel(best)
-
+ 
 
 
