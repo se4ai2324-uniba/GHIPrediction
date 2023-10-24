@@ -2,6 +2,7 @@
 from sklearn.ensemble import RandomForestRegressor
 from train_model import bestHyper
 from train_model import x_train, y_train
+import pickle
 
 class RandomForest:
 
@@ -11,11 +12,18 @@ class RandomForest:
         param_grid = {
             'max_depth':  [4,5,6],
             'n_estimators' : list(range(100,160, 10))}
-        result = bestHyper(param_grid, x_train, y_train, rf)
+        estimator, result = bestHyper(param_grid, x_train, y_train, rf)
         best_randomB = result.best_estimator_
 
-        return best_randomB
+        return estimator, best_randomB
+    def save_model(self, model):
+        pickle.dump(model, open("models/randomForest.pkl", "wb"))
+
+    def trainModel(self):
+        rf = RandomForest()
+        modello, _ = rf.trainRandomForest()
+        rf.save_model(modello)
 
 
 rf = RandomForest()
-rf.trainRandomForest()
+rf.trainModel()

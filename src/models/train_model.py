@@ -1,6 +1,5 @@
 from sklearn.model_selection import GridSearchCV
 from sklearn.neighbors import KNeighborsRegressor
-from sklearn.model_selection import cross_val_score
 from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 import sys
 sys.path.insert(0, "src/data")
@@ -25,13 +24,6 @@ def bestHyper(param_grid, x_train, y_train, model):
   print('Best Hyperparameters: %s' % result.best_params_)
   print(" ")
   return result.best_estimator_, result
-
-
-def crossLinear(model, x_trainB, y_trainB, scoring , cv):
-  linear = cross_val_score(model, x_trainB, y_trainB, scoring = scoring ,cv = cv)
-  modelF = model.fit(x_trainB, y_trainB)
-  predictAndResults(modelF, x_test, y_test)
-  return linear, modelF
 
 
 #TODO nel predict
