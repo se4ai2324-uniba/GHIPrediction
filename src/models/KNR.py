@@ -1,6 +1,7 @@
 from sklearn.neighbors import KNeighborsRegressor
 from train_model import bestHyper
 from train_model import x_train, y_train
+import pickle
 
 class KNR:
 
@@ -12,11 +13,19 @@ class KNR:
             'metric' : ['euclidean', 'manhattan', 'chebyshev', 'minkowski']
                     }
         
-        result = bestHyper(param_grid, x_train, y_train, knr)
+        estimator, result = bestHyper(param_grid, x_train, y_train, knr)
         best_randomB = result.best_estimator_
 
-        return best_randomB
+        return estimator, best_randomB
+    
+    def save_model(self, model):
+        pickle.dump(model, open("models/knr.pkl", "wb"))
+
+    def trainModel(self):
+        xgb = KNR()
+        modello, _ = xgb.trainKNR()
+        xgb.save_model(modello)
 
 
 knr = KNR()
-knr.trainKNR()
+knr.trainModel()

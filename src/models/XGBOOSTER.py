@@ -22,12 +22,12 @@ class XGBooster:
     def save_model(self, model):
         pickle.dump(model, open("models/xgb.pkl", "wb"))
 
-    def addestra(self):
+    def trainModel(self):
         xgb = XGBooster()
         modello, _ = xgb.trainXGBoost()
         xgb.save_model(modello)
 
 xgb = XGBooster()
-xgb.addestra()
+xgb.trainModel()
         
 
