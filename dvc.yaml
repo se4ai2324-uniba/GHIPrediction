@@ -1,0 +1,18 @@
+stages:
+  merging:
+    cmd: python3 src/data/make_dataset.py
+    deps:
+    - data/raw/2017.csv
+    - data/raw/2018.csv
+    - data/raw/2019.csv
+    - src/data/make_dataset.py
+    outs:
+    - data/raw/FinaleBari.csv
+
+  preprocessing:
+    cmd: python3 src/data/preprocessing.py
+    deps:
+    - src/data/preprocessing.py
+    outs:
+    - data/processed/GHI.csv
+    - data/processed/PreprocessedData.csv
