@@ -13,6 +13,46 @@ stages:
     cmd: python3 src/data/preprocessing.py
     deps:
     - src/data/preprocessing.py
+    - src/data/make_dataset.py
     outs:
     - data/processed/GHI.csv
     - data/processed/PreprocessedData.csv
+  split_dataset:
+    cmd: python3 src/data/split_dataset.py
+    deps:
+    - src/data/split_dataset.py
+    - src/data/preprocessing.py
+  train_model:
+    cmd: python3 src/models/train_model.py
+    deps:
+    - src/models/train_model.py
+    - src/data/split_dataset.py
+  Knr:
+    cmd: python3 src/models/KNR.py
+    deps:
+    - src/models/KNR.py
+    - src/models/train_model.py
+  XGBooster:
+    cmd: python3 src/models/XGBOOSTER.py
+    deps:
+    - src/models/XGBOOSTER.py
+    - src/models/train_model.py
+  LinearRegression:
+    cmd: python3 src/models/LinearRegression.py
+    deps:
+    - src/models/LinearRegression.py
+    - src/models/train_model.py
+  RandomForestRegressor:
+    cmd: python3 src/models/RandomForestRegressor.py
+    deps:
+    - src/models/RandomForestRegressor.py
+    - src/models/train_model.py
+
+  Evaluate:
+    cmd: python3 src/models/evaluate.py
+    deps:
+    - src/models/KNR.py
+    - src/models/LinearRegression.py
+    - src/models/RandomForestRegressor.py
+    - src/models/XGBOOSTER.py
+    - src/models/evaluate.py

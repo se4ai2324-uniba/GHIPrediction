@@ -36,3 +36,4 @@ class KNR:
 knr = KNR()
 best = knr.trainModel()
 knr.testModel(best)
+  
