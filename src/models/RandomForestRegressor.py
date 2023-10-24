@@ -1,8 +1,9 @@
 
 from sklearn.ensemble import RandomForestRegressor
 from train_model import bestHyper
-from train_model import x_train, y_train
+from train_model import x_train, y_train, x_test, y_test
 import pickle
+from train_model import stampa, predictAndResults
 
 class RandomForest:
 
@@ -21,9 +22,15 @@ class RandomForest:
 
     def trainModel(self):
         rf = RandomForest()
-        modello, _ = rf.trainRandomForest()
+        modello, best = rf.trainRandomForest()
         rf.save_model(modello)
+        return best
+    
+    def testModel(self, model):
+        risultati = predictAndResults(model, x_test, y_test)
+        stampa(risultati, "RandomForest")
 
 
 rf = RandomForest()
-rf.trainModel()
+best = rf.trainModel()
+rf.testModel(best)

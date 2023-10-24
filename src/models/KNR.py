@@ -1,7 +1,8 @@
 from sklearn.neighbors import KNeighborsRegressor
 from train_model import bestHyper
-from train_model import x_train, y_train
+from train_model import x_train, y_train, x_test, y_test
 import pickle
+from train_model import stampa, predictAndResults
 
 class KNR:
 
@@ -22,10 +23,16 @@ class KNR:
         pickle.dump(model, open("models/knr.pkl", "wb"))
 
     def trainModel(self):
-        xgb = KNR()
-        modello, _ = xgb.trainKNR()
-        xgb.save_model(modello)
+        knr = KNR()
+        modello, best = knr.trainKNR()
+        knr.save_model(modello)
+        return best
+
+    def testModel(self, model):
+        risultati = predictAndResults(model, x_test, y_test)
+        stampa(risultati, "KNR")
 
 
 knr = KNR()
-knr.trainModel()
+best = knr.trainModel()
+knr.testModel(best)
