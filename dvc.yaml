@@ -28,10 +28,6 @@ stages:
     - data/interim/y_train
     - data/interim/x_test
     - data/interim/y_test
-  train_model:
-    cmd: python3 src/models/train_model.py
-    deps:
-    - src/models/train_model.py
   Knr:
     cmd: python3 src/models/KNR.py
     deps:
