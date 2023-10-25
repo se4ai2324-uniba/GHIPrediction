@@ -2,17 +2,9 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 import sys
+import pandas as pd
 sys.path.insert(0, "src/data")
-from split_dataset import Split
 import math
-
-
-obj = Split()
-
-ox = obj.getTrain()
-
-x_train, x_test, y_train, y_test = ox
-
 
 
 def bestHyper(param_grid, x_train, y_train, model):

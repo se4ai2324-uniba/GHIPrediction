@@ -3,7 +3,7 @@ from train_model import bestHyper
 from train_model import x_train, y_train, x_test, y_test
 import pickle
 from train_model import stampa, predictAndResults
-
+import pandas as pd
 class KNR:
 
     def trainKNR(self):
@@ -14,6 +14,8 @@ class KNR:
             'metric' : ['euclidean', 'manhattan', 'chebyshev', 'minkowski']
                     }
         
+        x_train= pd.read_csv('data/interim/x_train.csv')
+        y_train= pd.read_csv('data/interim/y_train.csv')
         estimator, result = bestHyper(param_grid, x_train, y_train, knr)
         best_randomB = result.best_estimator_
 
@@ -29,6 +31,8 @@ class KNR:
         return best
 
     def testModel(self, model):
+        x_test= pd.read_csv('data/interim/x_test.csv')
+        y_test= pd.read_csv('data/interim/y_test.csv')
         risultati = predictAndResults(model, x_test, y_test)
         stampa(risultati, "KNR")
 
