@@ -21,6 +21,8 @@ stages:
   split_dataset:
     cmd: python3 src/data/split_dataset.py
     deps:
+    - data/processed/GHI.csv
+    - data/processed/PreprocessedData.csv
     - src/data/split_dataset.py
     - src/data/preprocessing.py
   train_model:
