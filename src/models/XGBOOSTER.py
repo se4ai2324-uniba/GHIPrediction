@@ -3,9 +3,9 @@ from train_model import bestHyper
 import pickle
 from train_model import  predictAndResults, stampa, use_split
 import pandas as pd
+import mlflow
+
 class XGBooster:
-
-
 
     def trainXGBoost(self):
       

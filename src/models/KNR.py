@@ -1,12 +1,13 @@
 from sklearn.neighbors import KNeighborsRegressor
-from train_model import bestHyper
+from train_model import gridLog
 import pickle
 from train_model import stampa, predictAndResults, use_split
 import pandas as pd
+import mlflow
+
 class KNR:
 
     def trainKNR(self):
-       
         knr = KNeighborsRegressor()
         param_grid = {
             'n_neighbors': list(range(5,10,1)),
@@ -14,7 +15,7 @@ class KNR:
                     }
         
         x_train, y_train, _, _ = use_split('split_train', 'split_test')
-        estimator, result = bestHyper(param_grid, x_train, y_train, knr)
+        estimator, result = gridLog('KNR', param_grid, x_train, y_train, knr)
         best_randomB = result.best_estimator_
 
         return estimator, best_randomB
@@ -33,8 +34,6 @@ class KNR:
         risultati = predictAndResults(model, x_test, y_test)
         stampa(risultati, "KNR")
 
-
 knr = KNR()
 best = knr.trainModel()
 knr.testModel(best)
-  
