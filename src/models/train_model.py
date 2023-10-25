@@ -7,6 +7,16 @@ sys.path.insert(0, "src/data")
 import math
 
 
+def use_split(csv1, csv2):
+    train = pd.read_csv(f"data/interim/{csv1}.csv")
+    test = pd.read_csv(f"data/interim/{csv2}.csv")
+    x_train = train.iloc[:, :3]
+    y_train = train.iloc[:, 3]
+    x_test = test.iloc[:, :3]
+    y_test = test.iloc[:, 3]
+
+    return x_train, y_train, x_test, y_test
+
 def bestHyper(param_grid, x_train, y_train, model):
   search = GridSearchCV(model, param_grid, cv = 10, scoring='neg_root_mean_squared_error')
   result = search.fit(x_train, y_train)

@@ -1,4 +1,2 @@
-/x_test.csv
-/x_train.csv
-/y_test.csv
-/y_train.csv
+/split_train.csv
+/split_test.csv
