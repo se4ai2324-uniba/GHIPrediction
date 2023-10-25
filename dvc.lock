@@ -47,14 +47,27 @@ stages:
   split_dataset:
     cmd: python3 src/data/split_dataset.py
     deps:
-    - path: src/data/preprocessing.py
+    - path: data/processed/GHI.csv
       hash: md5
-      md5: fbf10114a4f90e9e3737a089bd37cab3
-      size: 904
+      md5: f1de8485b982a40e7001e960954b1035
+      size: 120785
+    - path: data/processed/PreprocessedData.csv
+      hash: md5
+      md5: 93659bb3b337fb95309813608a39e657
+      size: 838995
     - path: src/data/split_dataset.py
       hash: md5
-      md5: 1fce0e3c9fb324dfb0979b2496b7b8ea
-      size: 655
+      md5: 7d88eb08a45d5ae1c0a1df4f68c80f3c
+      size: 1588
+    outs:
+    - path: data/interim/split_test.csv
+      hash: md5
+      md5: a38eed2e46f3e112519956c6c891eac0
+      size: 241336
+    - path: data/interim/split_train.csv
+      hash: md5
+      md5: 5513f1072675497530aa6b1349540a5e
+      size: 562583
   train_model:
     cmd: python3 src/models/train_model.py
     deps:

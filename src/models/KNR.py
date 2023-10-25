@@ -1,8 +1,7 @@
 from sklearn.neighbors import KNeighborsRegressor
 from train_model import bestHyper
-from train_model import x_train, y_train, x_test, y_test
 import pickle
-from train_model import stampa, predictAndResults
+from train_model import stampa, predictAndResults, use_split
 import pandas as pd
 class KNR:
 
@@ -14,8 +13,7 @@ class KNR:
             'metric' : ['euclidean', 'manhattan', 'chebyshev', 'minkowski']
                     }
         
-        x_train= pd.read_csv('data/interim/x_train.csv')
-        y_train= pd.read_csv('data/interim/y_train.csv')
+        x_train, y_train, _, _ = use_split('split_train', 'split_test')
         estimator, result = bestHyper(param_grid, x_train, y_train, knr)
         best_randomB = result.best_estimator_
 
@@ -31,8 +29,7 @@ class KNR:
         return best
 
     def testModel(self, model):
-        x_test= pd.read_csv('data/interim/x_test.csv')
-        y_test= pd.read_csv('data/interim/y_test.csv')
+        _, _, x_test, y_test = use_split('split_train', 'split_test')
         risultati = predictAndResults(model, x_test, y_test)
         stampa(risultati, "KNR")
 

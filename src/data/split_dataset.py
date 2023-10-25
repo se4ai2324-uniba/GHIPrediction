@@ -30,10 +30,22 @@ class Split():
 split = Split()
 
 x_train, x_test, y_train, y_test = split.split_dataset()
-split.saveSplit(x_train, "x_train")
-split.saveSplit(x_test, "x_test")
-split.saveSplit(y_train, "y_train")
-split.saveSplit(y_test, "y_test")
 
+x_train = x_train.rename(columns={'0': 'x_train'})
+x_train = x_train.rename(columns={'1': 'x_train'})
+x_train = x_train.rename(columns={'2': 'x_train'})
+x_test = x_test.rename(columns={'0': 'x_test'})
+x_test = x_test.rename(columns={'1': 'x_test'})
+x_test = x_test.rename(columns={'2': 'x_test'})
+y_train = y_train.rename(columns={'GHI': 'y_train'})
+y_test = y_test.rename(columns={'GHI': 'y_test'})
+
+# Concatena i DataFrame in un unico DataFrame
+concatenated_train = pd.concat([x_train, y_train], axis = 1, ignore_index=True)
+concatenated_test = pd.concat([x_test, y_test], axis = 1, ignore_index=True)
+
+# Salva il DataFrame concatenato in un file CSV
+split.saveSplit(concatenated_train, "split_train")
+split.saveSplit(concatenated_test, "split_test")
 
 
