@@ -12,6 +12,7 @@ stages:
   preprocessing:
     cmd: python3 src/data/preprocessing.py
     deps:
+    - data/raw/FinaleBari.csv
     - src/data/preprocessing.py
     - src/data/make_dataset.py
     outs:
