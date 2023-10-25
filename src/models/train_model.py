@@ -4,6 +4,7 @@ from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 import sys
 import pandas as pd
 import mlflow
+from mlflow.models import infer_signature
 
 sys.path.insert(0, "src/data")
 import math
@@ -48,47 +49,24 @@ def stampa(arr, name):
   print("Root Mean Squared Error: ", arr[1])
   print("R2: ", arr[0])
 
-def gridLog(model_name, param_grid, x_train, y_train, model):
-   best, cv_results = bestHyper(param_grid, x_train, y_train, model)
-   with mlflow.start_run() as run:  
-        mlflow.log_param("folds", cv_results.cv)
+def gridLog(model_name, model, grid, result, y_test):
+  with mlflow.start_run() as run:
+    mlflow.log_param("folds", grid.cv)
 
-        print("Logging parameters")
-        params = list(cv_results.param_grid.keys())
-        for param in params:
-            valori=[]
-            for key,value in cv_results.param_grid.items():
-              if key == param:
-                 valori.append(value)
-              for i in valori:
-               print(i)
-               mlflow.log_param(param, i)
+    print("Logging parameters")
+    params = grid.best_params_
+    for key,value in params.items():
+      mlflow.log_param(key, value)
 
-        print("Logging metrics")
-        for score_name in [score for score in cv_results if "mean_test" in score]:
-            mlflow.log_metric(score_name, f"{score_name}")
+    print("Logging metrics")
+    mlflow.log_metric("R2", f"{result[0]}")
+    mlflow.log_metric("RMSE", f"{result[1]}")
 
-        print("Logging model")        
-        mlflow.sklearn.log_model(cv_results.best_estimator_, model_name)
+    print("Logging model")    
+    signature= infer_signature(y_test, model.predict(y_test))    
+    mlflow.sklearn.log_model(model, model_name, signature=signature)
+    #mlflow.log_artifact("models")
 
-        # print("Logging CV results matrix")
-        # tempdir = tempfile.TemporaryDirectory().name
-        # os.mkdir(tempdir)
-        # timestamp = datetime.now().isoformat().split(".")[0].replace(":", ".")
-        # filename = "%s-%s-cv_results.csv" % (model_name, timestamp)
-        # csv = os.path.join(tempdir, filename)
-        # with warnings.catch_warnings():
-        #     warnings.simplefilter("ignore")
-        #     pd.DataFrame(cv_results).to_csv(csv, index=False)
-        
-        #mlflow.log_artifact(csv, "cv_results")
-
-        #res=predictAndResults(best, x_test, y_test)
-
-        run_id = run.info.run_uuid
-        experiment_id = run.info.experiment_id
-        mlflow.end_run()
-        print(mlflow.get_artifact_uri())
-        print("runID: %s" % run_id)
-
-        return best, cv_results
+    # print(mlflow.get_artifact_uri())
+    mlflow.end_run()
+  
