@@ -24,17 +24,17 @@ stages:
     - data/processed/PreprocessedData.csv
     - src/data/split_dataset.py
     outs:
-    - data/interim/x_train
-    - data/interim/y_train
-    - data/interim/x_test
-    - data/interim/y_test
+    - data/interim/x_train.csv
+    - data/interim/y_train.csv
+    - data/interim/x_test.csv
+    - data/interim/y_test.csv
   Knr:
     cmd: python3 src/models/KNR.py
     deps:
-    - data/interim/x_train
-    - data/interim/y_train
-    - data/interim/x_test
-    - data/interim/y_test
+    - data/interim/x_train.csv
+    - data/interim/y_train.csv
+    - data/interim/x_test.csv
+    - data/interim/y_test.csv
     - src/models/KNR.py
     - src/models/train_model.py
     outs:
@@ -42,10 +42,10 @@ stages:
   XGBooster:
     cmd: python3 src/models/XGBOOSTER.py
     deps:
-    - data/interim/x_train
-    - data/interim/y_train
-    - data/interim/x_test
-    - data/interim/y_test
+    - data/interim/x_train.csv
+    - data/interim/y_train.csv
+    - data/interim/x_test.csv
+    - data/interim/y_test.csv
     - src/models/XGBOOSTER.py
     - src/models/train_model.py
     outs:
@@ -53,10 +53,10 @@ stages:
   LinearRegression:
     cmd: python3 src/models/LinearRegression.py
     deps:
-    - data/interim/x_train
-    - data/interim/y_train
-    - data/interim/x_test
-    - data/interim/y_test
+    - data/interim/x_train.csv
+    - data/interim/y_train.csv
+    - data/interim/x_test.csv
+    - data/interim/y_test.csv
     - src/models/LinearRegression.py
     - src/models/train_model.py
     outs:
@@ -64,10 +64,10 @@ stages:
   RandomForestRegressor:
     cmd: python3 src/models/RandomForestRegressor.py
     deps:
-    - data/interim/x_train
-    - data/interim/y_train
-    - data/interim/x_test
-    - data/interim/y_test
+    - data/interim/x_train.csv
+    - data/interim/y_train.csv
+    - data/interim/x_test.csv
+    - data/interim/y_test.csv
     - src/models/RandomForestRegressor.py
     - src/models/train_model.py
     outs:

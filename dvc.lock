@@ -27,10 +27,10 @@ stages:
   preprocessing:
     cmd: python3 src/data/preprocessing.py
     deps:
-    - path: src/data/make_dataset.py
+    - path: data/raw/FinaleBari.csv
       hash: md5
-      md5: fc7901b8d9a81cc3c60aa42ab2027de5
-      size: 587
+      md5: f43699a4fdb78fbe546417f315353978
+      size: 1907947
     - path: src/data/preprocessing.py
       hash: md5
       md5: fbf10114a4f90e9e3737a089bd37cab3
