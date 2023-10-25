@@ -63,8 +63,14 @@ def gridLog(model_name, model, grid, result, y_test):
     mlflow.log_metric("RMSE", f"{result[1]}")
 
     print("Logging model")    
-    signature= infer_signature(y_test, model.predict(y_test))    
-    mlflow.sklearn.log_model(model, model_name, signature=signature)
+    conda_env = {
+    "channels": ["conda-forge"],
+    "dependencies": ["python=3.8.8", "pip"],
+    "pip": ["mlflow==2.3", "scikit-learn==0.23.2", "cloudpickle==1.6.0"],
+    "name": "mlflow-env",
+    }
+    mlflow.sklearn.log_model(model, model_name, conda_env=conda_env)  
+    #mlflow.sklearn.log_model(model, model_name)
     #mlflow.log_artifact("models")
 
     # print(mlflow.get_artifact_uri())
