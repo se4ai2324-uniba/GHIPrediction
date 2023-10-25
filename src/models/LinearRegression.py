@@ -4,8 +4,9 @@ from train_model import predictAndResults, metrics
 import pickle
 from train_model import stampa, predictAndResults, use_split
 import pandas as pd
-class Linear:
+import mlflow
 
+class Linear:
 
     def trainLinear(self):
         lr = linear_model.LinearRegression()

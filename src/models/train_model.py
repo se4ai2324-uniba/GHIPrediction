@@ -3,6 +3,9 @@ from sklearn.neighbors import KNeighborsRegressor
 from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 import sys
 import pandas as pd
+import mlflow
+from mlflow.models import infer_signature
+
 sys.path.insert(0, "src/data")
 import math
 
@@ -46,3 +49,24 @@ def stampa(arr, name):
   print("Root Mean Squared Error: ", arr[1])
   print("R2: ", arr[0])
 
+def gridLog(model_name, model, grid, result, y_test):
+  with mlflow.start_run() as run:
+    mlflow.log_param("folds", grid.cv)
+
+    print("Logging parameters")
+    params = grid.best_params_
+    for key,value in params.items():
+      mlflow.log_param(key, value)
+
+    print("Logging metrics")
+    mlflow.log_metric("R2", f"{result[0]}")
+    mlflow.log_metric("RMSE", f"{result[1]}")
+
+    print("Logging model")    
+    signature= infer_signature(y_test, model.predict(y_test))    
+    mlflow.sklearn.log_model(model, model_name, signature=signature)
+    #mlflow.log_artifact("models")
+
+    # print(mlflow.get_artifact_uri())
+    mlflow.end_run()
+  

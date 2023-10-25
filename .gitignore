@@ -8,6 +8,8 @@ __pycache__/
 # Distribution / packaging
 .Python
 env/
+myenv/
+mlruns/
 build/
 develop-eggs/
 dist/

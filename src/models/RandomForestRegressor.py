@@ -4,6 +4,8 @@ from train_model import bestHyper
 import pickle
 from train_model import stampa, predictAndResults, use_split
 import pandas as pd
+import mlflow
+
 class RandomForest:
 
     def trainRandomForest(self):
