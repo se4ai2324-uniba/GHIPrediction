@@ -5,6 +5,7 @@ import sys
 import pandas as pd
 import mlflow
 from mlflow.models import infer_signature
+import xgboost as xg
 
 sys.path.insert(0, "src/data")
 import math
@@ -13,6 +14,8 @@ import math
 def use_split(csv1, csv2):
     train = pd.read_csv(f"data/interim/{csv1}.csv")
     test = pd.read_csv(f"data/interim/{csv2}.csv")
+    train = train.rename(columns={'0':'Temperature', '1':'DNI', '2': 'Humidity'})
+    test = test.rename(columns={'0':'Temperature', '1':'DNI', '2': 'Humidity'})
     x_train = train.iloc[:, :3]
     y_train = train.iloc[:, 3]
     x_test = test.iloc[:, :3]
@@ -49,7 +52,7 @@ def stampa(arr, name):
   print("Root Mean Squared Error: ", arr[1])
   print("R2: ", arr[0])
 
-def gridLog(model_name, model, grid, result, x_test, best):
+def gridLog(modelName, model, grid, result, x_test, best):
   mlflow.set_tracking_uri("http://127.0.0.1:5000")
 
   with mlflow.start_run() as run:
@@ -68,15 +71,15 @@ def gridLog(model_name, model, grid, result, x_test, best):
     conda_env = {
     "channels": ["conda-forge"],
     "dependencies": ["python=3.8.8", "pip"],
-    "pip": ["mlflow==2.3", "scikit-learn==0.23.2", "cloudpickle==1.6.0"],
+    "pip": ["mlflow==2.3", "scikit-learn==0.23.2", "cloudpickle==1.6.0", f"xgboost=={xg.__version__}"],
     "name": "mlflow-env",
     }
 
     signature = infer_signature(x_test, best.predict(x_test))
-    mlflow.sklearn.log_model(sk_model=model, artifact_path="models", conda_env=conda_env, signature=signature)  
-    #mlflow.sklearn.log_model(model, model_name)
-    mlflow.log_artifact("models/KNR.pkl")
-
-    # print(mlflow.get_artifact_uri())
+    if isinstance(model, xg.XGBRegressor):
+      mlflow.xgboost.log_model(xgb_model=best, artifact_path="models", conda_env=conda_env, signature=signature)  
+    else:
+      mlflow.sklearn.log_model(sk_model=best, artifact_path="models", conda_env=conda_env, signature=signature)  
+    mlflow.log_artifact(f"models/{modelName}.pkl")
     mlflow.end_run()
   

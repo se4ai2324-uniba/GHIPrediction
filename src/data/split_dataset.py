@@ -44,6 +44,9 @@ y_test = y_test.rename(columns={'GHI': 'y_test'})
 concatenated_train = pd.concat([x_train, y_train], axis = 1, ignore_index=True)
 concatenated_test = pd.concat([x_test, y_test], axis = 1, ignore_index=True)
 
+concatenated_train = concatenated_train.rename(columns={'0':'Temperature', '1':'DNI', '2': 'Humidity'})
+concatenated_test = concatenated_test.rename(columns={'0':'Temperature', '1':'DNI', '2': 'Humidity'})
+
 # Salva il DataFrame concatenato in un file CSV
 split.saveSplit(concatenated_train, "split_train")
 split.saveSplit(concatenated_test, "split_test")

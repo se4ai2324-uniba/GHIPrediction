@@ -1,6 +1,6 @@
 
 from sklearn.ensemble import RandomForestRegressor
-from train_model import bestHyper
+from train_model import bestHyper, gridLog
 import pickle
 from train_model import stampa, predictAndResults, use_split
 import pandas as pd
@@ -14,26 +14,22 @@ class RandomForest:
         param_grid = {
             'max_depth':  [4,5,6],
             'n_estimators' : list(range(100,160, 10))}
-        x_train, y_train, _, _ = use_split('split_train', 'split_test')
-        estimator, result = bestHyper(param_grid, x_train, y_train, rf)
-        best_randomB = result.best_estimator_
+        x_train, y_train, x_test, _ = use_split('split_train', 'split_test')
+        estimator, grid = bestHyper(param_grid, x_train, y_train, rf)
+        result = self.testModel(estimator)
+        self.save_model(estimator)
+        gridLog("randomForestRegressor",rf, grid, result, x_test, estimator)
 
-        return estimator, best_randomB
+        return estimator, result
     def save_model(self, model):
-        pickle.dump(model, open("models/randomForest.pkl", "wb"))
-
-    def trainModel(self):
-        rf = RandomForest()
-        modello, best = rf.trainRandomForest()
-        rf.save_model(modello)
-        return best
+        pickle.dump(model, open("models/randomForestRegressor.pkl", "wb"))
     
     def testModel(self, model):
         _, _, x_test, y_test = use_split('split_train', 'split_test')
         risultati = predictAndResults(model, x_test, y_test)
         stampa(risultati, "RandomForest")
+        return risultati
 
 
 rf = RandomForest()
-best = rf.trainModel()
-rf.testModel(best)
+rf.trainRandomForest()
