@@ -50,6 +50,8 @@ def stampa(arr, name):
   print("R2: ", arr[0])
 
 def gridLog(model_name, model, grid, result, x_test, best):
+  mlflow.set_tracking_uri("http://127.0.0.1:5000")
+
   with mlflow.start_run() as run:
     mlflow.log_param("folds", grid.cv)
 
