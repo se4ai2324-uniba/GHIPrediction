@@ -14,10 +14,10 @@ class KNR:
             'metric' : ['euclidean', 'manhattan', 'chebyshev', 'minkowski']
                     }
         
-        x_train, y_train, _, y_test = use_split('split_train', 'split_test')
+        x_train, y_train, x_test, y_test = use_split('split_train', 'split_test')
         estimator, grid = bestHyper(param_grid, x_train, y_train, knr)
         result=self.testModel(estimator)
-        gridLog("KNR", knr, grid, result, y_test)
+        gridLog("KNR", knr, grid, result, x_test, estimator)
         best_randomB = grid.best_estimator_
 
         return estimator, best_randomB
