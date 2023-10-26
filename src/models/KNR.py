@@ -14,23 +14,17 @@ class KNR:
             'metric' : ['euclidean', 'manhattan', 'chebyshev', 'minkowski']
                     }
         
-        x_train, y_train, x_test, y_test = use_split('split_train', 'split_test')
+        x_train, y_train, x_test, _ = use_split('split_train', 'split_test')
         estimator, grid = bestHyper(param_grid, x_train, y_train, knr)
         result=self.testModel(estimator)
         self.save_model(estimator)
-        gridLog("KNR", knr, grid, result, x_test, estimator)
-        best_randomB = grid.best_estimator_
+        gridLog("knr", knr, grid, result, x_test, estimator)
+        #best_random = grid.best_estimator_
 
-        return estimator, best_randomB
+        return estimator, result
     
     def save_model(self, model):
         pickle.dump(model, open("models/knr.pkl", "wb"))
-
-    def trainModel(self):
-        knr = KNR()
-        modello, best = knr.trainKNR()
-        knr.save_model(modello)
-        return best
 
     def testModel(self, model):
         _, _, x_test, y_test = use_split('split_train', 'split_test')
@@ -40,6 +34,6 @@ class KNR:
 
 
 knr = KNR()
-best = knr.trainModel()
+knr.trainKNR()
 
   
