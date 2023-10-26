@@ -49,7 +49,7 @@ def stampa(arr, name):
   print("Root Mean Squared Error: ", arr[1])
   print("R2: ", arr[0])
 
-def gridLog(model_name, model, grid, result, y_test):
+def gridLog(model_name, model, grid, result, x_test, best):
   with mlflow.start_run() as run:
     mlflow.log_param("folds", grid.cv)
 
@@ -69,7 +69,9 @@ def gridLog(model_name, model, grid, result, y_test):
     "pip": ["mlflow==2.3", "scikit-learn==0.23.2", "cloudpickle==1.6.0"],
     "name": "mlflow-env",
     }
-    mlflow.sklearn.log_model(model, model_name, conda_env=conda_env)  
+
+    signature = infer_signature(x_test, best.predict(x_test))
+    mlflow.sklearn.log_model(sk_model=model, artifact_path="models", conda_env=conda_env, signature=signature)  
     #mlflow.sklearn.log_model(model, model_name)
     mlflow.log_artifact("models/KNR.pkl")
 
