@@ -35,6 +35,7 @@ stages:
     - src/models/train_model.py
     outs:
     - models/knr.pkl
+    - models/knr.metrics
   XGBooster:
     cmd: python3 src/models/XGBOOSTER.py
     deps:
@@ -44,6 +45,7 @@ stages:
     - src/models/train_model.py
     outs:
     - models/xgb.pkl
+    - models/xgb.metrics
   LinearRegression:
     cmd: python3 src/models/LinearRegression.py
     deps:
@@ -53,6 +55,7 @@ stages:
     - src/models/train_model.py
     outs:
     - models/linear.pkl
+    - models/linear.metrics
   RandomForestRegressor:
     cmd: python3 src/models/RandomForestRegressor.py
     deps:
@@ -61,12 +64,17 @@ stages:
     - src/models/RandomForestRegressor.py
     - src/models/train_model.py
     outs:
-    - models/randomForest.pkl
+    - models/randomForestRegressor.pkl
+    - models/randomForestRegressor.metrics
 
-  Evaluate:
-    cmd: python3 src/models/evaluate.py
+  Compare:
+    cmd: python3 src/models/compare.py
     deps:
-    - models/randomForest.pkl
+    - models/randomForestRegressor.metrics
+    - models/randomForestRegressor.pkl
+    - models/linear.metrics
     - models/linear.pkl
+    - models/xgb.metrics
     - models/xgb.pkl
+    - models/knr.metrics
     - models/knr.pkl

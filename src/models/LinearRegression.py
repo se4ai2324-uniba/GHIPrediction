@@ -1,9 +1,8 @@
 from sklearn import linear_model
 from sklearn.model_selection import cross_val_score
-from train_model import predictAndResults, metrics
+from train_model import predictAndResults
 import pickle
-from train_model import stampa, predictAndResults, use_split
-import pandas as pd
+from train_model import stampa, predictAndResults, use_split, save_metrics
 import mlflow
 from mlflow.models import infer_signature
 
@@ -35,6 +34,7 @@ class Linear:
         mlflow.sklearn.log_model(sk_model=model, artifact_path="models", conda_env=conda_env, signature=signature)  
         mlflow.log_artifact("models/linear.pkl")
         mlflow.end_run()
+        save_metrics(result, 'linear')
         return model
 
     def save_model(self, model):

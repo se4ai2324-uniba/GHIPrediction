@@ -1,6 +1,6 @@
 from sklearn.model_selection import GridSearchCV
 from sklearn.neighbors import KNeighborsRegressor
-from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
+from sklearn.metrics import r2_score, mean_squared_error
 import sys
 import pandas as pd
 import mlflow
@@ -10,6 +10,11 @@ import xgboost as xg
 sys.path.insert(0, "src/data")
 import math
 
+def save_metrics(results, file_name):
+  with open(f"models/{file_name}.metrics", 'w') as fd:
+    fd.write(str(results[0]))
+    fd.write("\n")
+    fd.write(str(results[1]))
 
 def use_split(csv1, csv2):
     train = pd.read_csv(f"data/interim/{csv1}.csv")
