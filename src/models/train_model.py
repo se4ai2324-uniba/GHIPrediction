@@ -71,7 +71,7 @@ def gridLog(model_name, model, grid, result, y_test):
     }
     mlflow.sklearn.log_model(model, model_name, conda_env=conda_env)  
     #mlflow.sklearn.log_model(model, model_name)
-    #mlflow.log_artifact("models")
+    mlflow.log_artifact("models/KNR.pkl")
 
     # print(mlflow.get_artifact_uri())
     mlflow.end_run()
