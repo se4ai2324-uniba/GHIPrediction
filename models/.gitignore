@@ -1,4 +1,8 @@
 /knr.pkl
 /linear.pkl
-/randomForest.pkl
+/randomForestRegressor.pkl
 /xgb.pkl
+/knr.metrics
+/linear.metrics
+/randomForestRegressor.metrics
+/xgb.metrics

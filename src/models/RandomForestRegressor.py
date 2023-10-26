@@ -2,9 +2,7 @@
 from sklearn.ensemble import RandomForestRegressor
 from train_model import bestHyper, gridLog
 import pickle
-from train_model import stampa, predictAndResults, use_split
-import pandas as pd
-import mlflow
+from train_model import stampa, predictAndResults, use_split, save_metrics
 
 class RandomForest:
 
@@ -19,8 +17,8 @@ class RandomForest:
         result = self.testModel(estimator)
         self.save_model(estimator)
         gridLog("randomForestRegressor",rf, grid, result, x_test, estimator)
-
-        return estimator, result
+        save_metrics(result, 'randomForestRegressor')
+        return result
     def save_model(self, model):
         pickle.dump(model, open("models/randomForestRegressor.pkl", "wb"))
     

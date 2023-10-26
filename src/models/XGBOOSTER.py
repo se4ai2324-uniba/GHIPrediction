@@ -1,9 +1,7 @@
 import xgboost as xg
 from train_model import bestHyper, gridLog
 import pickle
-from train_model import  predictAndResults, stampa, use_split
-import pandas as pd
-import mlflow
+from train_model import  predictAndResults, stampa, use_split, save_metrics
 
 class XGBooster:
 
@@ -19,7 +17,8 @@ class XGBooster:
         result = self.testModel(estimator)
         self.save_model(estimator)
         gridLog("xgb", xgb, grid, result, x_test, estimator)
-        return  estimator, result
+        save_metrics(result, 'xgb')
+        return  result
     
 
     def save_model(self, model):
