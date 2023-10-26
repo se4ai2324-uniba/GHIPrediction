@@ -17,7 +17,7 @@ def save_metrics(results, file_name):
     fd.write("\n")
     fd.write(str(results[1]))
 
-def save_model(self, model, name):
+def save_model(model, name):
         pickle.dump(model, open(f"models/{name}.pkl", "wb"))
 
 def use_split(csv1, csv2):
