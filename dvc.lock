@@ -62,12 +62,12 @@ stages:
     outs:
     - path: data/interim/split_test.csv
       hash: md5
-      md5: c55d9e79f9bba94ddb7399580a65f345
-      size: 241113
+      md5: 18b7e520d8fd9902bffa0f45585897bd
+      size: 241189
     - path: data/interim/split_train.csv
       hash: md5
-      md5: 82a475a1398bb9a2ccaa52d39dd82420
-      size: 562806
+      md5: 859c4dba0f1db917bf83a2eae9126455
+      size: 562730
   train_model:
     cmd: python3 src/models/train_model.py
     deps:
@@ -84,12 +84,12 @@ stages:
     deps:
     - path: data/interim/split_test.csv
       hash: md5
-      md5: c55d9e79f9bba94ddb7399580a65f345
-      size: 241113
+      md5: 18b7e520d8fd9902bffa0f45585897bd
+      size: 241189
     - path: data/interim/split_train.csv
       hash: md5
-      md5: 82a475a1398bb9a2ccaa52d39dd82420
-      size: 562806
+      md5: 859c4dba0f1db917bf83a2eae9126455
+      size: 562730
     - path: src/models/KNR.py
       hash: md5
       md5: d93853abd4499c6cf84a2557758f4f36
@@ -101,11 +101,11 @@ stages:
     outs:
     - path: models/knr.metrics
       hash: md5
-      md5: a77ec8f8bed158e5f7ce92111892fa5c
+      md5: cbc3d4648482db383bd0beaa6fc27822
       size: 37
     - path: models/knr.pkl
       hash: md5
-      md5: 392a0582d97fda388fb712661db64921
+      md5: 42ee2d75471c43764d7d6aaf40458aba
       size: 406943
   XGBooster:
     cmd: python3 src/models/XGBOOSTER.py

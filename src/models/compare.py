@@ -1,3 +1,4 @@
+import pickle
 from train_model import save_model, save_metrics
 
 xgb_metrics = [] 
@@ -51,9 +52,6 @@ def compareR2(array, array2, array3, array4):
                         best = i
     return best
 
-
-risultati_confronto = []
-
 def compare(i, array, array2, array3, array4):
     model = ""
     for elemento in i:
@@ -67,5 +65,9 @@ def compare(i, array, array2, array3, array4):
               model = array4[2]
     return model
         
-migliore = compareR2(linear, randomForest, xgb_metrics, knr)
-modello = compare(migliore, linear, randomForest, knr, xgb_metrics)
+best_metrics = compareR2(linear, randomForest, xgb_metrics, knr)
+best_model = compare(best_metrics, linear, randomForest, knr, xgb_metrics)
+
+load_model = pickle.load(open(f"{best_model}.pkl", 'rb')) 
+save_model(load_model, 'best_model')
+save_metrics(best_metrics, 'best_metrics')
