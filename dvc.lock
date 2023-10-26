@@ -112,12 +112,12 @@ stages:
     deps:
     - path: data/interim/split_test.csv
       hash: md5
-      md5: c55d9e79f9bba94ddb7399580a65f345
-      size: 241113
+      md5: 18b7e520d8fd9902bffa0f45585897bd
+      size: 241189
     - path: data/interim/split_train.csv
       hash: md5
-      md5: 82a475a1398bb9a2ccaa52d39dd82420
-      size: 562806
+      md5: 859c4dba0f1db917bf83a2eae9126455
+      size: 562730
     - path: src/models/XGBOOSTER.py
       hash: md5
       md5: c738eb604742a640af4218ceebbcedf5
@@ -129,23 +129,23 @@ stages:
     outs:
     - path: models/xgb.metrics
       hash: md5
-      md5: 40f13eaa6c383b0388ef2d05b463beca
-      size: 37
+      md5: be9cf8a04a0b561a7c49068519b97c8b
+      size: 36
     - path: models/xgb.pkl
       hash: md5
-      md5: 7070903ac6818e4a643eb6760763a6f3
-      size: 269263
+      md5: 4706d9b9ec6e63d654f46ec69286b9f2
+      size: 271643
   LinearRegression:
     cmd: python3 src/models/LinearRegression.py
     deps:
     - path: data/interim/split_test.csv
       hash: md5
-      md5: c55d9e79f9bba94ddb7399580a65f345
-      size: 241113
+      md5: 18b7e520d8fd9902bffa0f45585897bd
+      size: 241189
     - path: data/interim/split_train.csv
       hash: md5
-      md5: 82a475a1398bb9a2ccaa52d39dd82420
-      size: 562806
+      md5: 859c4dba0f1db917bf83a2eae9126455
+      size: 562730
     - path: src/models/LinearRegression.py
       hash: md5
       md5: 8b08aa2eb098c0a7ec570686219ec139
@@ -157,23 +157,23 @@ stages:
     outs:
     - path: models/linear.metrics
       hash: md5
-      md5: 86baf6ed773f94e41df12b0e537e7cf5
-      size: 36
+      md5: e30f76804a2127fcda9cb2c057e58bf3
+      size: 37
     - path: models/linear.pkl
       hash: md5
-      md5: 86281d90f3b381fd82f0ca22b204510a
+      md5: 88312d19bb169b678c16d05e3f0b6efc
       size: 569
   RandomForestRegressor:
     cmd: python3 src/models/RandomForestRegressor.py
     deps:
     - path: data/interim/split_test.csv
       hash: md5
-      md5: c55d9e79f9bba94ddb7399580a65f345
-      size: 241113
+      md5: 18b7e520d8fd9902bffa0f45585897bd
+      size: 241189
     - path: data/interim/split_train.csv
       hash: md5
-      md5: 82a475a1398bb9a2ccaa52d39dd82420
-      size: 562806
+      md5: 859c4dba0f1db917bf83a2eae9126455
+      size: 562730
     - path: src/models/RandomForestRegressor.py
       hash: md5
       md5: 6beef97cace5d6a756c79f6e75404d88
@@ -185,12 +185,12 @@ stages:
     outs:
     - path: models/randomForestRegressor.metrics
       hash: md5
-      md5: 75404571422dafe7067cd62f34b48d4a
+      md5: 9c46e6bd18595ee494b9095dd5f4ab6b
       size: 37
     - path: models/randomForestRegressor.pkl
       hash: md5
-      md5: b5c4a08c13b14ffd311fc2159359efa3
-      size: 939591
+      md5: ab6e714d953003f3d9ae25574d299a7a
+      size: 1408998
   Evaluate:
     cmd: python3 src/models/evaluate.py
     deps:
@@ -214,3 +214,47 @@ stages:
       hash: md5
       md5: 8d60fe121e5f5aacf3cff22509470519
       size: 435
+  Compare:
+    cmd: python3 src/models/compare.py
+    deps:
+    - path: models/knr.metrics
+      hash: md5
+      md5: cbc3d4648482db383bd0beaa6fc27822
+      size: 37
+    - path: models/knr.pkl
+      hash: md5
+      md5: 42ee2d75471c43764d7d6aaf40458aba
+      size: 406943
+    - path: models/linear.metrics
+      hash: md5
+      md5: e30f76804a2127fcda9cb2c057e58bf3
+      size: 37
+    - path: models/linear.pkl
+      hash: md5
+      md5: 88312d19bb169b678c16d05e3f0b6efc
+      size: 569
+    - path: models/randomForestRegressor.metrics
+      hash: md5
+      md5: 9c46e6bd18595ee494b9095dd5f4ab6b
+      size: 37
+    - path: models/randomForestRegressor.pkl
+      hash: md5
+      md5: ab6e714d953003f3d9ae25574d299a7a
+      size: 1408998
+    - path: models/xgb.metrics
+      hash: md5
+      md5: be9cf8a04a0b561a7c49068519b97c8b
+      size: 36
+    - path: models/xgb.pkl
+      hash: md5
+      md5: 4706d9b9ec6e63d654f46ec69286b9f2
+      size: 271643
+    outs:
+    - path: models/best_metrics.metrics
+      hash: md5
+      md5: be9cf8a04a0b561a7c49068519b97c8b
+      size: 36
+    - path: models/best_model.pkl
+      hash: md5
+      md5: 4706d9b9ec6e63d654f46ec69286b9f2
+      size: 271643
