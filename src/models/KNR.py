@@ -17,6 +17,7 @@ class KNR:
         x_train, y_train, x_test, y_test = use_split('split_train', 'split_test')
         estimator, grid = bestHyper(param_grid, x_train, y_train, knr)
         result=self.testModel(estimator)
+        self.save_model(estimator)
         gridLog("KNR", knr, grid, result, x_test, estimator)
         best_randomB = grid.best_estimator_
 
