@@ -17,7 +17,8 @@ def read_and_assign(name, array):
         array.append(name)
 
 
-
+#for add another model just create a module, add it in the dvc pipeline, call the saved model and the matric with the same name 
+#and add a read_and_assign with the same name
 read_and_assign("linear", linear)
 read_and_assign("randomForestRegressor", randomForest)
 read_and_assign("xgb", xgb_metrics)
@@ -68,6 +69,6 @@ def compare(i, array, array2, array3, array4):
 best_metrics = compareR2(linear, randomForest, xgb_metrics, knr)
 best_model = compare(best_metrics, linear, randomForest, knr, xgb_metrics)
 
-load_model = pickle.load(open(f"{best_model}.pkl", 'rb')) 
+load_model = pickle.load(open(f"models/{best_model}.pkl", 'rb')) 
 save_model(load_model, 'best_model')
 save_metrics(best_metrics, 'best_metrics')
