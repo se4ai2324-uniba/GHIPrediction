@@ -1,5 +1,5 @@
 from sklearn.neighbors import KNeighborsRegressor
-from train_model import bestHyper, gridLog, save_metrics
+from train_model import bestHyper, gridLog, save_metrics, save_model
 import pickle
 from train_model import stampa, predictAndResults, use_split
 
@@ -17,15 +17,12 @@ class KNR:
         x_train, y_train, x_test, y_test = use_split('split_train', 'split_test')
         estimator, grid = bestHyper(param_grid, x_train, y_train, knr)
         result=self.testModel(estimator)
-        self.save_model(estimator)
+        save_model(estimator, 'knr')
         gridLog("knr", knr, grid, result, x_test, estimator)
         save_metrics(result, 'knr')
         #best_random = grid.best_estimator_
 
         return result
-    
-    def save_model(self, model):
-        pickle.dump(model, open("models/knr.pkl", "wb"))
 
     def testModel(self, model):
         _, _, x_test, y_test = use_split('split_train', 'split_test')

@@ -168,25 +168,29 @@ stages:
     deps:
     - path: data/interim/split_test.csv
       hash: md5
-      md5: e931072b0efa258657d81886dfa28cc8
-      size: 241251
+      md5: 75042471656e1f28008bdcc60be98dfd
+      size: 241225
     - path: data/interim/split_train.csv
       hash: md5
-      md5: 9cf87e4ff2e175c56fe94fae0bd87c22
-      size: 562668
+      md5: c9e8bea4060be369b6986bcead798986
+      size: 562694
     - path: src/models/RandomForestRegressor.py
       hash: md5
-      md5: b81e81146f257f7858d87c19f09b9cd7
-      size: 1162
+      md5: 55e88614fe69ca37e8140583b1793b93
+      size: 1161
     - path: src/models/train_model.py
       hash: md5
-      md5: b0d9621f147396fc73e0dd6a43b4e288
-      size: 2523
+      md5: 21a79c4812930079b4bc6330d9de1227
+      size: 2975
     outs:
-    - path: models/randomForest.pkl
+    - path: models/randomForestRegressor.metrics
       hash: md5
-      md5: 30867328b3250c2e511b79a731302cd7
-      size: 939572
+      md5: 59d769d1421466df03488755af6e0f0f
+      size: 37
+    - path: models/randomForestRegressor.pkl
+      hash: md5
+      md5: 5f2ff459bf817e500efc6cb1a1fdcae4
+      size: 1315005
   Evaluate:
     cmd: python3 src/models/evaluate.py
     deps:

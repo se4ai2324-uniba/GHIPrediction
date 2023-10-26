@@ -2,7 +2,7 @@ from sklearn import linear_model
 from sklearn.model_selection import cross_val_score
 from train_model import predictAndResults
 import pickle
-from train_model import stampa, predictAndResults, use_split, save_metrics
+from train_model import stampa, predictAndResults, use_split, save_metrics, save_model
 import mlflow
 from mlflow.models import infer_signature
 
@@ -19,7 +19,7 @@ class Linear:
         mlflow.start_run()
         print("Logging parameters")
         mlflow.log_param("folds", folds)
-        self.save_model(model)
+        save_model(model, 'linear')
         result = self.testModel(model)
         print("Logging metrics")
         mlflow.log_metric("R2", f"{result[0]}")
@@ -36,9 +36,6 @@ class Linear:
         mlflow.end_run()
         save_metrics(result, 'linear')
         return model
-
-    def save_model(self, model):
-        pickle.dump(model, open("models/linear.pkl", "wb"))
 
     def testModel(self, model):
         _, _, x_test, y_test = use_split('split_train', 'split_test')
