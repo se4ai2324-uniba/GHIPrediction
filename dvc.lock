@@ -62,12 +62,12 @@ stages:
     outs:
     - path: data/interim/split_test.csv
       hash: md5
-      md5: 75042471656e1f28008bdcc60be98dfd
-      size: 241225
+      md5: c55d9e79f9bba94ddb7399580a65f345
+      size: 241113
     - path: data/interim/split_train.csv
       hash: md5
-      md5: c9e8bea4060be369b6986bcead798986
-      size: 562694
+      md5: 82a475a1398bb9a2ccaa52d39dd82420
+      size: 562806
   train_model:
     cmd: python3 src/models/train_model.py
     deps:
