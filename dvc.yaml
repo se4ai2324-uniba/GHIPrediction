@@ -7,8 +7,7 @@ stages:
     - data/raw/2019.csv
     - src/data/make_dataset.py
     outs:
-    - data/raw/FinaleBari.csv:
-       cache: false
+    - data/raw/FinaleBari.csv
 
   preprocessing:
     cmd: python3 src/data/preprocessing.py
@@ -16,10 +15,8 @@ stages:
     - data/raw/FinaleBari.csv
     - src/data/preprocessing.py
     outs:
-    - data/processed/GHI.csv:
-        cache: false
-    - data/processed/PreprocessedData.csv:
-        cache: false
+    - data/processed/GHI.csv
+    - data/processed/PreprocessedData.csv
   split_dataset:
     cmd: python3 src/data/split_dataset.py
     deps:
@@ -27,10 +24,8 @@ stages:
     - data/processed/PreprocessedData.csv
     - src/data/split_dataset.py
     outs:
-    - data/interim/split_train.csv:
-        cache: false
-    - data/interim/split_test.csv:
-        cache: false
+    - data/interim/split_train.csv
+    - data/interim/split_test.csv
   Knr:
     cmd: python3 src/models/KNR.py
     deps:
