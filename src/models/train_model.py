@@ -6,6 +6,7 @@ import pandas as pd
 import mlflow
 from mlflow.models import infer_signature
 import xgboost as xg
+import pickle
 
 sys.path.insert(0, "src/data")
 import math
@@ -15,6 +16,9 @@ def save_metrics(results, file_name):
     fd.write(str(results[0]))
     fd.write("\n")
     fd.write(str(results[1]))
+
+def save_model(self, model, name):
+        pickle.dump(model, open(f"models/{name}.pkl", "wb"))
 
 def use_split(csv1, csv2):
     train = pd.read_csv(f"data/interim/{csv1}.csv")

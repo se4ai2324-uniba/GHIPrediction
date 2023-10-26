@@ -1,7 +1,7 @@
 import xgboost as xg
 from train_model import bestHyper, gridLog
 import pickle
-from train_model import  predictAndResults, stampa, use_split, save_metrics
+from train_model import  predictAndResults, stampa, use_split, save_metrics, save_model
 
 class XGBooster:
 
@@ -15,14 +15,11 @@ class XGBooster:
         x_train, y_train, x_test, _ = use_split('split_train', 'split_test')
         estimator, grid = bestHyper(param_grid, x_train, y_train, xgb)
         result = self.testModel(estimator)
-        self.save_model(estimator)
+        save_model(estimator, 'xgb')
         gridLog("xgb", xgb, grid, result, x_test, estimator)
         save_metrics(result, 'xgb')
         return  result
     
-
-    def save_model(self, model):
-        pickle.dump(model, open("models/xgb.pkl", "wb"))
 
     def testModel(self, model):
         _, _, x_test, y_test = use_split('split_train', 'split_test')
