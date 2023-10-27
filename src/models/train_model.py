@@ -7,6 +7,8 @@ import mlflow
 from mlflow.models import infer_signature
 import xgboost as xg
 import pickle
+import dagshub
+
 
 sys.path.insert(0, "src/data")
 import math
@@ -62,6 +64,7 @@ def stampa(arr, name):
   print("R2: ", arr[0])
 
 def gridLog(modelName, model, grid, result, x_test, best):
+  dagshub.init("GHIPrediction","se4ai2324-uniba", mlflow=True)
   mlflow.set_tracking_uri("http://127.0.0.1:5000")
 
   with mlflow.start_run() as run:
