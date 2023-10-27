@@ -1,4 +1,3 @@
-# GHI PREDICTION \
 ---
 language:
 - en
@@ -20,6 +19,7 @@ metrics:
 - RMSE
 ---
 
+# GHI PREDICTION
 ## System Description:
 The system will predict the Global Horizontal Irradiance (**GHI**) – *the amount of solar energy from the sun hitting a specific location*. \
 It will do this by analyzing various physical data, including temperature, humidity, and Direct Normal Irradiance (**DNI**).
