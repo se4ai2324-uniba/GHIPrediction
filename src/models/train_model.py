@@ -64,8 +64,8 @@ def stampa(arr, name):
   print("R2: ", arr[0])
 
 def gridLog(modelName, model, grid, result, x_test, best):
-  dagshub.init("GHIPrediction","se4ai2324-uniba", mlflow=True)
-  mlflow.set_tracking_uri("http://127.0.0.1:5000")
+  dagshub.init(repo_owner='se4ai2324-uniba', repo_name='GHIPrediction', mlflow=True)
+  mlflow.set_tracking_uri("https://dagshub.com/se4ai2324-uniba/GHIPrediction.mlflow")
 
   with mlflow.start_run() as run:
     mlflow.log_param("folds", grid.cv)

@@ -5,7 +5,7 @@ import pickle
 from train_model import stampa, predictAndResults, use_split, save_metrics, save_model
 import mlflow
 from mlflow.models import infer_signature
-
+import dagshub
 class Linear:
 
     def trainLinear(self):
@@ -15,7 +15,8 @@ class Linear:
         linear = cross_val_score(lr, x_train, y_train, scoring = 'neg_root_mean_squared_error' ,cv = folds)
         #model può essere utile se si vuole stampare i valori, e quindi calcolare la media, della cross validation
         model = lr.fit(x_train, y_train)
-        mlflow.set_tracking_uri("http://127.0.0.1:5000")
+        dagshub.init(repo_owner='se4ai2324-uniba', repo_name='GHIPrediction', mlflow=True)
+        mlflow.set_tracking_uri("https://dagshub.com/se4ai2324-uniba/GHIPrediction.mlflow")
         mlflow.start_run()
         print("Logging parameters")
         mlflow.log_param("folds", folds)
