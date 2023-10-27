@@ -1,9 +1,29 @@
 # GHI PREDICTION
+---
+language:
+- en
+
+tags:
+- regression
+- prediction
+- machine_learning
+- linear_regression
+- xgbooster
+- random_forest
+- k_nearest_neighbors
+
+datasets:
+- national_solar_radiation_database
+
+metrics:
+- R2
+- RMSE
+---
 
 ## System Description:
 The system will predict the Global Horizontal Irradiance (**GHI**) – *the amount of solar energy from the sun hitting a specific location*. \
 It will do this by analyzing various physical data, including temperature, humidity, and Direct Normal Irradiance (**DNI**).
-Information about our models can be foud [here](https://github.com/se4ai2324-uniba/GHIPrediction/blob/main/models/README.md).
+Information about our models can be found [here](https://github.com/se4ai2324-uniba/GHIPrediction/blob/main/models/README.md).
 
 ## Data card:
 Information about our data can be found [here](https://github.com/se4ai2324-uniba/GHIPrediction/blob/main/data/README.md).
@@ -16,6 +36,30 @@ Information about our data can be found [here](https://github.com/se4ai2324-unib
 
 Belonging to the organization **se4ai2324-uniba**.
 
+
+## How to
+In order to use the system we suggest to:
+1. Depending on your OS create a python environment with the command: 
+    ```
+    python3 -m venv name_of_your_env
+    WINDOWS USERS:  call name_of_your_env/Scripts/activate
+    MACOS USERS:    source name_of_your_env/bin/activate
+    ``` 
+2. Install requirements:
+    ```
+    pip install -r requirements.txt
+    ```
+3. Open the mlflow server:
+    ```
+    mlflow ui
+    ```
+
+4. Start the dvc pipeline: \
+to let the system download the data files you have *to request the access to this* [*Google Drive repository*](https://drive.google.com/drive/folders/1zeHWwvDTYC7o_vcgWIwIpVO2VJdffhF4?usp=sharing)
+    ```
+    dvc pull
+    dvc repro
+    ```
 
 Project Organization
 ------------
