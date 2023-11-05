@@ -48,8 +48,18 @@ validator = context.get_validator(
     expectation_suite_name='preprocessed',
 )
 
-validator.expect_column_to_exist('Temperature')
+
+
 validator.expect_column_values_to_not_be_null("Temperature")
+validator.expect_column_values_to_not_be_null("DNI")
+validator.expect_column_values_to_not_be_null("Relative Humidity")
+
+
+validator.expect_column_values_to_be_of_type("Temperature", 'float')
+validator.expect_column_values_to_be_in_type_list("DNI", ['float','int'])
+validator.expect_column_values_to_be_of_type("Relative Humidity", 'float')
+
+
 validator.save_expectation_suite(discard_failed_expectations=False)
 checkpoint = context.add_or_update_checkpoint(
     name="preprocessed_checkpoint",
@@ -58,6 +68,8 @@ checkpoint = context.add_or_update_checkpoint(
 )
 checkpoint_result = checkpoint.run()
 context.view_validation_result(checkpoint_result)
+
+print(context.build_data_docs())
 
 
 

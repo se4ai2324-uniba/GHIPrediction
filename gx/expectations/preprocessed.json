@@ -3,7 +3,7 @@
   "expectation_suite_name": "preprocessed",
   "expectations": [
     {
-      "expectation_type": "expect_column_to_exist",
+      "expectation_type": "expect_column_values_to_not_be_null",
       "kwargs": {
         "column": "Temperature"
       },
@@ -12,7 +12,41 @@
     {
       "expectation_type": "expect_column_values_to_not_be_null",
       "kwargs": {
-        "column": "Temperature"
+        "column": "DNI"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "Relative Humidity"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "Temperature",
+        "type_": "float"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_type_list",
+      "kwargs": {
+        "column": "DNI",
+        "type_list": [
+          "float",
+          "int"
+        ]
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "Relative Humidity",
+        "type_": "float"
       },
       "meta": {}
     }

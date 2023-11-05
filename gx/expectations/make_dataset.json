@@ -3,6 +3,34 @@
   "expectation_suite_name": "make_dataset",
   "expectations": [
     {
+      "expectation_type": "expect_column_to_exist",
+      "kwargs": {
+        "column": "GHI"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_to_exist",
+      "kwargs": {
+        "column": "Temperature"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_to_exist",
+      "kwargs": {
+        "column": "DNI"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_to_exist",
+      "kwargs": {
+        "column": "Relative Humidity"
+      },
+      "meta": {}
+    },
+    {
       "expectation_type": "expect_column_values_to_not_be_null",
       "kwargs": {
         "column": "GHI"
@@ -20,6 +48,13 @@
       "expectation_type": "expect_column_values_to_not_be_null",
       "kwargs": {
         "column": "DNI"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "Relative Humidity"
       },
       "meta": {}
     }
