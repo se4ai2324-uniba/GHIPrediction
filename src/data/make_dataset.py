@@ -33,9 +33,16 @@ validator = context.get_validator(
     expectation_suite_name='make_dataset',
 )
 
+validator.expect_column_to_exist("GHI")
+validator.expect_column_to_exist("Temperature")
+validator.expect_column_to_exist("DNI")
+validator.expect_column_to_exist("Relative Humidity")
+
 validator.expect_column_values_to_not_be_null("GHI")
 validator.expect_column_values_to_not_be_null("Temperature")
 validator.expect_column_values_to_not_be_null("DNI")
+validator.expect_column_values_to_not_be_null("Relative Humidity")
+
 
 validator.save_expectation_suite(discard_failed_expectations=False)
 checkpoint = context.add_or_update_checkpoint(
