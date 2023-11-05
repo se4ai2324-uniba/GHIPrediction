@@ -18,14 +18,29 @@ dfB2 = pd.read_csv('data/raw/2018.csv', delimiter = ',')
 dfB3 = pd.read_csv('data/raw/2019.csv', delimiter = ',')
 dfBari = dataset.finalDf(dfB1, dfB2, dfB3, 'FinaleBari.csv')
 
+
 context = gx.get_context()
-validator = context.sources.pandas_default.read_csv('data/raw/FinaleBari.csv')
+#datasource = context.sources.add_pandas('finaleBari_data')
+datasource = context.datasources["finaleBari_data"]
+#asset = datasource.add_csv_asset('finaleBari_asset', filepath_or_buffer='data/raw/FinaleBari.csv')
+asset = datasource.assets[0]
+batch_request = asset.build_batch_request()
+
+context.add_or_update_expectation_suite("make_dataset")
+
+validator = context.get_validator(
+    batch_request=batch_request,
+    expectation_suite_name='make_dataset',
+)
+
 validator.expect_column_values_to_not_be_null("GHI")
 validator.expect_column_values_to_not_be_null("Temperature")
 validator.expect_column_values_to_not_be_null("DNI")
-validator.save_expectation_suite()
+
+validator.save_expectation_suite(discard_failed_expectations=False)
 checkpoint = context.add_or_update_checkpoint(
-    name="my_quickstart_checkpoint",
+    name="make_dataset_checkpoint",
+    expectation_suite_name='make_dataset',
     validator=validator,
 )
 checkpoint_result = checkpoint.run()

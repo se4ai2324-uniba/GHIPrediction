@@ -1,10 +1,10 @@
-name: first_checkpoint
+name: preprocessed_checkpoint
 config_version: 1.0
 template_name:
 module_name: great_expectations.checkpoint
 class_name: Checkpoint
 run_name_template:
-expectation_suite_name:
+expectation_suite_name: preprocessed
 batch_request: {}
 action_list:
   - name: store_validation_result
@@ -20,11 +20,11 @@ evaluation_parameters: {}
 runtime_configuration: {}
 validations:
   - batch_request:
-      datasource_name: default_pandas_datasource
-      data_asset_name: '#ephemeral_pandas_asset'
+      datasource_name: postProcessed_data
+      data_asset_name: postProcessed_asset
       options: {}
       batch_slice:
-    expectation_suite_name: default
+    expectation_suite_name: preprocessed
 profilers: []
 ge_cloud_id:
 expectation_suite_ge_cloud_id:
