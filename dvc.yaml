@@ -27,11 +27,11 @@ stages:
     - data/interim/split_train.csv
     - data/interim/split_test.csv
   Knr:
-    cmd: python3 src/models/KNR.py
+    cmd: python3 src/models/Knr.py
     deps:
     - data/interim/split_train.csv
     - data/interim/split_test.csv
-    - src/models/KNR.py
+    - src/models/Knr.py
     - src/models/train_model.py
     outs:
     - models/knr.pkl
