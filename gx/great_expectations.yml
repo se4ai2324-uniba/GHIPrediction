@@ -93,8 +93,18 @@ anonymous_usage_statistics:
   data_context_id: dd420922-ba26-414b-be89-fde6453b245a
   enabled: true
 fluent_datasources:
-  default_pandas_datasource:
+  postProcessed_data:
     type: pandas
+    assets:
+      postProcessed_asset:
+        type: csv
+        filepath_or_buffer: data/processed/PreprocessedData.csv
+  finaleBari_data:
+    type: pandas
+    assets:
+      finaleBari_asset:
+        type: csv
+        filepath_or_buffer: data/raw/FinaleBari.csv
 notebooks:
 include_rendered_content:
   globally: false

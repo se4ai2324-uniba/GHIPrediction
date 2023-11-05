@@ -1,9 +1,16 @@
 {
   "data_asset_type": null,
-  "expectation_suite_name": "default",
+  "expectation_suite_name": "make_dataset",
   "expectations": [
     {
-      "expectation_type": "expect_column_to_exist",
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "GHI"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
       "kwargs": {
         "column": "Temperature"
       },
@@ -12,7 +19,7 @@
     {
       "expectation_type": "expect_column_values_to_not_be_null",
       "kwargs": {
-        "column": "Temperature"
+        "column": "DNI"
       },
       "meta": {}
     }
