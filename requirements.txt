@@ -5,3 +5,4 @@ mlflow
 dvc
 dagshub
 pylint
+great_expectations
