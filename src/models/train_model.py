@@ -69,7 +69,7 @@ def grid_log(model_name, model, grid, result, x_test):
     dagshub.init(repo_owner='se4ai2324-uniba', repo_name='GHIPrediction', mlflow=True)
     mlflow.set_tracking_uri("https://dagshub.com/se4ai2324-uniba/GHIPrediction.mlflow")
 
-    with mlflow.start_run():
+    with mlflow.start_run() as run:
         mlflow.log_param("folds", grid.cv)
         print("Logging parameters")
         params = grid.best_params_

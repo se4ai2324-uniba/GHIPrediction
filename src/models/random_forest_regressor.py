@@ -12,7 +12,7 @@ def train_random_forest():
         'max_depth':  [4,5,6],
         'n_estimators' : list(range(100,160, 10))}
     x_train, y_train, x_test, _ = use_split('split_train', 'split_test')
-    estimator, grid = bestHyper(param_grid, x_train, y_train, rf)
+    estimator, grid = best_hyper(param_grid, x_train, y_train, rf)
     result = test_model(estimator)
     save_model(estimator, 'randomForestRegressor')
     grid_log("randomForestRegressor",rf, grid, result, x_test)
