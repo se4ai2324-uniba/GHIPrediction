@@ -1,28 +1,28 @@
+"""module to implement training for k-nearest regressor"""
 from sklearn.neighbors import KNeighborsRegressor
-from train_model import bestHyper, gridLog, save_metrics, save_model, stampa, predictAndResults, use_split
+from train_model import best_hyper, grid_log, save_metrics
+from train_model import save_model, stampa, predict_and_results, use_split
 
+def train_knr():
+    """function to train the model"""
+    knr = KNeighborsRegressor()
+    param_grid = {
+        'n_neighbors': list(range(5,10,1)),
+        'metric' : ['euclidean', 'manhattan', 'chebyshev', 'minkowski']
+        }
+    x_train, y_train, x_test, _ = use_split('split_train', 'split_test')
+    estimator, grid = best_hyper(param_grid, x_train, y_train, knr)
+    result=test_model(estimator)
+    save_model(estimator, 'knr')
+    grid_log("knr", knr, grid, result, x_test)
+    save_metrics(result, 'knr')
+    return result
 
-class Knr:
+def test_model(model):
+    """function to test the model"""
+    _, _, x_test, y_test = use_split('split_train', 'split_test')
+    risultati = predict_and_results(model, x_test, y_test)
+    stampa(risultati, "KNR")
+    return risultati
 
-    def trainKNR(self):
-        knr = KNeighborsRegressor()
-        param_grid = {
-            'n_neighbors': list(range(5,10,1)),
-            'metric' : ['euclidean', 'manhattan', 'chebyshev', 'minkowski']
-            }
-        x_train, y_train, x_test, y_test = use_split('split_train', 'split_test')
-        estimator, grid = bestHyper(param_grid, x_train, y_train, knr)
-        result=self.test_model(estimator)
-        save_model(estimator, 'knr')
-        gridLog("knr", knr, grid, result, x_test, estimator)
-        save_metrics(result, 'knr')
-        return result
-
-    def test_model(self, model):
-        _, _, x_test, y_test = use_split('split_train', 'split_test')
-        risultati = predictAndResults(model, x_test, y_test)
-        stampa(risultati, "KNR")
-        return risultati
-
-knr = Knr()
-knr.trainKNR()
+train_knr()
