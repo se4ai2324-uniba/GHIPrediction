@@ -4,8 +4,8 @@ import dagshub
 from sklearn import linear_model
 from sklearn.model_selection import cross_val_score
 from mlflow.models import infer_signature
-from .train_model import predict_and_results
-from .train_model import stampa, use_split, save_metrics, save_model
+from train_model import predict_and_results
+from train_model import stampa, use_split, save_metrics, save_model
 
 def train_linear():
     """function to train the model"""

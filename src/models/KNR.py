@@ -1,7 +1,7 @@
 """module to implement training for k-nearest regressor"""
 from sklearn.neighbors import KNeighborsRegressor
-from .train_model import best_hyper, grid_log, save_metrics
-from .train_model import save_model, stampa, predict_and_results, use_split
+from train_model import best_hyper, grid_log, save_metrics
+from train_model import save_model, stampa, predict_and_results, use_split
 
 def train_knr():
     """function to train the model"""
@@ -11,7 +11,7 @@ def train_knr():
         'metric' : ['euclidean', 'manhattan', 'chebyshev', 'minkowski']
         }
     x_train, y_train, x_test, _ = use_split('split_train', 'split_test')
-    estimator, grid = bestHyper(param_grid, x_train, y_train, knr)
+    estimator, grid = best_hyper(param_grid, x_train, y_train, knr)
     result=test_model(estimator)
     save_model(estimator, 'knr')
     grid_log("knr", knr, grid, result, x_test)

@@ -14,15 +14,14 @@ sys.path.insert(0, "src/data")
 
 def save_metrics(results, file_name):
     """function to save the metrics"""
-    with open(f"models/{file_name}.metrics", 'w', encoding='utf8') as fd:
+    with open(f"models/{file_name}.metrics", 'w', encoding='utf-8') as fd:
         fd.write(str(results[0]))
         fd.write("\n")
         fd.write(str(results[1]))
 
 def save_model(model, name):
     """function to save the model"""
-    with open(f"models/{name}.pkl", "wb", encoding='utf8'):
-        pickle.dump(model)
+    pickle.dump(model, open(f"models/{name}.pkl", "wb"))
 
 def use_split(csv1, csv2):
     """function to split data"""

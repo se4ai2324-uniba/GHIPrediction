@@ -1,7 +1,7 @@
 """module to implement training for xgbooster"""
 import xgboost as xg
-from .train_model import best_hyper, grid_log
-from .train_model import predict_and_results, stampa, use_split, save_metrics, save_model
+from train_model import best_hyper, grid_log
+from train_model import predict_and_results, stampa, use_split, save_metrics, save_model
 
 def train_xgbooster():
     """function to train the model"""

@@ -1,9 +1,9 @@
 
 """module to implement training for random forest regressor"""
 from sklearn.ensemble import RandomForestRegressor
-from .train_model import best_hyper, grid_log
-from .train_model import stampa, predict_and_results
-from .train_model import use_split, save_metrics, save_model
+from train_model import best_hyper, grid_log
+from train_model import stampa, predict_and_results
+from train_model import use_split, save_metrics, save_model
 
 def train_random_forest():
     """function to train the model"""
