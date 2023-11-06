@@ -27,44 +27,44 @@ stages:
     - data/interim/split_train.csv
     - data/interim/split_test.csv
   Knr:
-    cmd: python3 src/models/Knr.py
+    cmd: python3 src/models/knr.py
     deps:
     - data/interim/split_train.csv
     - data/interim/split_test.csv
-    - src/models/Knr.py
+    - src/models/knr.py
     - src/models/train_model.py
     outs:
     - models/knr.pkl
     metrics:
     - models/knr.metrics
   XGBooster:
-    cmd: python3 src/models/XGBOOSTER.py
+    cmd: python3 src/models/xgbooster.py
     deps:
     - data/interim/split_train.csv
     - data/interim/split_test.csv
-    - src/models/XGBOOSTER.py
+    - src/models/xgbooster.py
     - src/models/train_model.py
     outs:
     - models/xgb.pkl
     metrics:
     - models/xgb.metrics
   LinearRegression:
-    cmd: python3 src/models/LinearRegression.py
+    cmd: python3 src/models/linear_regressor.py
     deps:
     - data/interim/split_train.csv
     - data/interim/split_test.csv
-    - src/models/LinearRegression.py
+    - src/models/linear_regressor.py
     - src/models/train_model.py
     outs:
     - models/linear.pkl
     metrics:
     - models/linear.metrics
   RandomForestRegressor:
-    cmd: python3 src/models/RandomForestRegressor.py
+    cmd: python3 src/models/random_forest_regressor.py
     deps:
     - data/interim/split_train.csv
     - data/interim/split_test.csv
-    - src/models/RandomForestRegressor.py
+    - src/models/random_forest_regressor.py
     - src/models/train_model.py
     outs:
     - models/randomForestRegressor.pkl
