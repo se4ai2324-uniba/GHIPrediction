@@ -1,3 +1,4 @@
+"""module for great expectations testing"""
 import great_expectations as gx
 
 context = gx.get_context()
@@ -34,13 +35,13 @@ checkpoint = context.add_or_update_checkpoint(
 )
 checkpoint_result = checkpoint.run()
 context.view_validation_result(checkpoint_result)
-print(context.build_data_docs())
 
 
 context = gx.get_context()
 #datasource = context.sources.add_pandas('postProcessed_data')
 datasource = context.datasources["postProcessed_data"]
-#asset = datasource.add_csv_asset('postProcessed_asset', filepath_or_buffer='data/processed/PreprocessedData.csv')
+#asset = datasource.add_csv_asset('postProcessed_asset',
+# filepath_or_buffer='data/processed/PreprocessedData.csv')
 asset = datasource.assets[0]
 batch_request = asset.build_batch_request()
 
