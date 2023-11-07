@@ -1,5 +1,6 @@
 
 """module for preprocessing the data"""
+import pytest
 import pandas as pd
 from sklearn.preprocessing import RobustScaler
 
@@ -31,3 +32,15 @@ dfNew = pd.DataFrame(dfS)
 dfNew.to_csv('data/processed/PreprocessedData.csv', header=['Temperature', 'DNI',
 'Relative Humidity'])
 ghi.to_csv('data/processed/GHI.csv')
+
+def test_scalarization():
+    """utility test fuction"""
+    data_processor=Preprocessing()
+    data={'A':[1,2,3], 'B':[4,5,6], 'GHI':[7,8,9]}
+    df=pd.DataFrame(data)
+
+    result=data_processor.scalarization(df)
+    assert result is not None
+    assert result.shape[1]==df.shape[1]-1
+
+test_scalarization()
