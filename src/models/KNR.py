@@ -11,7 +11,7 @@ def train_knr():
         'metric' : ['euclidean', 'manhattan', 'chebyshev', 'minkowski']
         }
     x_train, y_train, x_test, _ = use_split('split_train', 'split_test')
-    estimator, grid = best_hyper(param_grid, x_train, y_train, knr)
+    estimator, grid, n_split = best_hyper(param_grid, x_train, y_train, knr)
     result=test_model(estimator)
     save_model(estimator, 'knr')
     grid_log("knr", knr, grid, result, x_test)

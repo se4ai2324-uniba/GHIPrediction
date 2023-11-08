@@ -43,7 +43,7 @@ def best_hyper(param_grid, x_train, y_train, model):
     print(f'Best Score: {result.best_score_} ')
     print(f'Best Hyperparameters: {result.best_params_}')
     print(" ")
-    return result.best_estimator_, result
+    return result.best_estimator_, result, search.n_splits_
 
 def predict_and_results(best, x_test, y_test):
     """function to predict and see results"""
