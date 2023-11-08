@@ -11,7 +11,7 @@ def train_xgbooster():
         'max_depth': [2,5,10],
         'n_estimators' : [50,100]}
     x_train, y_train, x_test, _ = use_split('split_train', 'split_test')
-    estimator, grid, n_split= best_hyper(param_grid, x_train, y_train, xgb)
+    estimator, grid, _= best_hyper(param_grid, x_train, y_train, xgb)
     result = test_model(estimator)
     save_model(estimator, 'xgb')
     grid_log("xgb", xgb, grid, result, x_test)

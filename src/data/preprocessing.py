@@ -4,11 +4,10 @@ import pandas as pd
 from sklearn.preprocessing import RobustScaler
 
 class Preprocessing:
-
+    """class representing the preprocessing process"""
     def __init__(self):
         pass
 
-    """class representing the preprocessing process"""
     def pre_processing(self):
         """function to preprocess data frame"""
         df = pd.read_csv('data/raw/FinaleBari.csv', header=0)
