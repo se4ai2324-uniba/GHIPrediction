@@ -1,16 +1,19 @@
 """module containing testing functions for preprocessing module"""
 import sys
+import pytest
 import pandas as pd
 sys.path.insert(0, "src/data/")
-from preprocessing import Preprocessing
+from preprocessing import Preprocessing, final_df
 
-def test_scalarization():
+@pytest.fixture
+def dataframe():
+    """needed to recall final_df as fixture"""
+    return final_df
+
+def test_scalarization(dataframe):
     """utility test fuction"""
     data_processor=Preprocessing()
-    data={'A':[1,2,3], 'B':[4,5,6], 'GHI':[7,8,9]}
-    df=pd.DataFrame(data)
-    result=data_processor.scalarization(df)
-
+    data=dataframe
+    result=data_processor.scalarization(data)
     assert result is not None
-    assert result.shape[1]==df.shape[1]-1
-    
+    assert result.shape[1]==data.shape[1]-1
