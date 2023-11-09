@@ -98,13 +98,13 @@ fluent_datasources:
     assets:
       postProcessed_asset:
         type: csv
-        filepath_or_buffer: data\processed\PreprocessedData.csv
+        filepath_or_buffer: data/processed/PreprocessedData.csv
   finaleBari_data:
     type: pandas
     assets:
       finaleBari_asset:
         type: csv
-        filepath_or_buffer: data\raw\FinaleBari.csv
+        filepath_or_buffer: data/raw/FinaleBari.csv
 notebooks:
 include_rendered_content:
   globally: false
