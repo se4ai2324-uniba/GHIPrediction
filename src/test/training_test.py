@@ -12,10 +12,10 @@ from train_model import save_model, stampa, predict_and_results, use_split
 from knr import test_model
 
 @pytest.fixture
-def testing_test_model():
-    return test_model
+def testing_use_split():
+    return use_split
 
-def test_knr():
+def test_knr(testing_use_split):
     """testing function for knr model"""
     knr = KNeighborsRegressor()
     param_grid = {
@@ -24,16 +24,16 @@ def test_knr():
         }
     head = ['Temperature', 'DNI', 'Humidity']
     
-    x_train, y_train, x_test, _ = use_split('split_train', 'split_test')
+    x_train, y_train, x_test, _ = testing_use_split('split_train', 'split_test')
     # x_train = pd.DataFrame(x_train, columns=head)
     # y_train = pd.DataFrame(x_train)
-    estimator, grid, _ = best_hyper(param_grid, x_train, y_train, knr)
-    result= test_model(estimator)
+    #estimator, grid, _ = best_hyper(param_grid, x_train, y_train, knr)
+    # result= testing_test_model(estimator)
     #save_model(estimator, 'knr')
     #grid_log("knr", knr, grid, result, x_test)
     #save_metrics(result, 'knr')
 
-    best_estimator, result, n_split = best_hyper(param_grid, x_train, y_train, krn)
+    best_estimator, result, n_split = best_hyper(param_grid, x_train, y_train, knr)
     assert best_estimator is not None
     assert result is not None
     assert n_split == 10
