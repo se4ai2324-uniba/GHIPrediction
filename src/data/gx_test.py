@@ -1,6 +1,7 @@
 """module for great expectations testing"""
 import great_expectations as gx
-
+MAX = 981
+MIN = 0
 context = gx.get_context()
 #datasource = context.sources.add_pandas('finaleBari_data')
 datasource = context.datasources["finaleBari_data"]
@@ -25,6 +26,7 @@ validator.expect_column_values_to_not_be_null("Temperature")
 validator.expect_column_values_to_not_be_null("DNI")
 validator.expect_column_values_to_not_be_null("Relative Humidity")
 
+validator.expect_column_values_to_be_between("GHI", MIN, MAX)
 
 validator.save_expectation_suite(discard_failed_expectations=False)
 checkpoint = context.add_or_update_checkpoint(

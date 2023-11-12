@@ -26,8 +26,14 @@ class Preprocessing:
         df_transformed = scaler.transform(tmp)
         return df_transformed
 
+    def find_minmax_ghi(self,df):
+        valore_massimo_colonna = df['GHI'].max()
+        valore_minimo_colonna = df['GHI'].min()
+        return valore_massimo_colonna, valore_minimo_colonna
+
 preprocessing = Preprocessing()
 final_df = preprocessing.pre_processing()
+max_value, min_value = preprocessing.find_minmax_ghi(final_df)
 ghi = final_df.GHI
 dfS = preprocessing.scalarization(final_df)
 dfNew = pd.DataFrame(dfS)
