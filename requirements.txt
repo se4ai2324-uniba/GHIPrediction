@@ -7,3 +7,5 @@ dagshub
 pylint
 great_expectations
 pytest
+fastapi
+uvicorn
