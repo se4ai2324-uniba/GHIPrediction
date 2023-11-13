@@ -1,5 +1,6 @@
 """module for APIs"""
 from fastapi import FastAPI
+from app.schema import Xgbooster
 
 app=FastAPI()
 
@@ -9,4 +10,5 @@ def root():
         "message":"hi"
         }
 
-
+@app.get("/model")
+def 
