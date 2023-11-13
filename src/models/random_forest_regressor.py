@@ -1,5 +1,6 @@
 
 """module to implement training for random forest regressor"""
+import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
 from train_model import best_hyper, grid_log
 from train_model import stampa, predict_and_results

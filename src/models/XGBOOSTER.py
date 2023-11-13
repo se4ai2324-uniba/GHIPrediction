@@ -1,4 +1,5 @@
 """module to implement training for xgbooster"""
+import pandas as pd
 import xgboost as xg
 import csv
 from train_model import best_hyper, grid_log

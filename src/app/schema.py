@@ -1,15 +1,19 @@
 """module for pydentic schemas"""
 import sys
 sys.path.insert(0,'src/models')
-from knr import train_knr
 from pydantic import BaseModel
 
-class Knr(BaseModel):
+class Params(BaseModel):
     """class representing xgbooster model"""
     name:str
-    params:dict[str,list[int]]
-    
-result=train_knr()
+    params:dict[str,str]
+
+
+class Results(BaseModel):
+    name:str
+    results:str
+
+
 
 
 
