@@ -10,5 +10,3 @@ def root():
         "message":"hi"
         }
 
-@app.get("/model")
-def 

@@ -1,4 +1,5 @@
 """module to implement training for k-nearest regressor"""
+import csv
 from sklearn.neighbors import KNeighborsRegressor
 from train_model import best_hyper, grid_log, save_metrics
 from train_model import save_model, stampa, predict_and_results, use_split
@@ -16,6 +17,7 @@ def train_knr():
     save_model(estimator, 'knr')
     grid_log("knr", knr, grid, result, x_test)
     save_metrics(result, 'knr')
+    write_params(grid.best_params_)
     return result
 
 def test_model(model):
@@ -24,5 +26,10 @@ def test_model(model):
     risultati = predict_and_results(model, x_test, y_test)
     stampa(risultati, "KNR")
     return risultati
+
+def write_params(dati_dict):
+    df = pd.DataFrame(dati_dict)
+    nome_file_csv = 'knr_params.csv'
+    df.to_csv(nome_file_csv, index=False)
 
 train_knr()
