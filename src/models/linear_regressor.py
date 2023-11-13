@@ -1,6 +1,7 @@
 """module to implement training for linear regressor"""
 import mlflow
 import dagshub
+import pandas as pd
 from sklearn import linear_model
 from sklearn.model_selection import cross_val_score
 from mlflow.models import infer_signature
@@ -39,6 +40,7 @@ def train_linear():
     mlflow.log_artifact("models/linear.pkl")
     mlflow.end_run()
     save_metrics(result, 'linear')
+    write_params(model.get_params())
     return model
 
 def test_model(model):
@@ -47,5 +49,10 @@ def test_model(model):
     risultati = predict_and_results(model, x_test, y_test)
     stampa(risultati, "Linear Regression")
     return risultati
+
+def write_params(dati_dict):
+    df = pd.DataFrame([dati_dict])
+    nome_file_csv = 'src/models/params/lr_params.csv'
+    df.to_csv(nome_file_csv, index=False)
 
 train_linear()

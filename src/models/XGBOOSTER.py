@@ -20,7 +20,6 @@ def train_xgbooster():
     write_params(grid.best_params_)
     return  result
 
-
 def test_model(model):
     """function to test the model"""
     _, _, x_test, y_test = use_split('split_train', 'split_test')
@@ -28,10 +27,9 @@ def test_model(model):
     stampa(risultati, "XGBooster")
     return risultati
 
-
 def write_params(dati_dict):
-    with open('xgbooster_params', mode='w', newline='') as file_csv:
-        writer = csv.DictWriter(file_csv)
-        writer.writerows(dati_dict)
+    df = pd.DataFrame([dati_dict])
+    nome_file_csv = 'src/models/params/xgb_params.csv'
+    df.to_csv(nome_file_csv, index=False)
 
 train_xgbooster()
