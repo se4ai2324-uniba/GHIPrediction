@@ -9,3 +9,4 @@ great_expectations
 pytest
 fastapi
 uvicorn
+pydantic
