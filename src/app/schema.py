@@ -4,7 +4,7 @@ sys.path.insert(0,'src/models')
 from knr import train_knr
 from pydantic import BaseModel
 
-class Xgbooster(BaseModel):
+class Knr(BaseModel):
     """class representing xgbooster model"""
     name:str
     params:dict[str,list[int]]

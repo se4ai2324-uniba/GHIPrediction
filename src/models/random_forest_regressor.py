@@ -17,6 +17,7 @@ def train_random_forest():
     save_model(estimator, 'randomForestRegressor')
     grid_log("randomForestRegressor",rf, grid, result, x_test)
     save_metrics(result, 'randomForestRegressor')
+    write_params(grid.best_params_)
     return result
 
 def test_model(model):
@@ -25,5 +26,10 @@ def test_model(model):
     risultati = predict_and_results(model, x_test, y_test)
     stampa(risultati, "RandomForest")
     return risultati
+
+def write_params(dati_dict):
+    df = pd.DataFrame([dati_dict])
+    nome_file_csv = 'src/models/params/rf_params.csv'
+    df.to_csv(nome_file_csv, index=False)
 
 train_random_forest()
