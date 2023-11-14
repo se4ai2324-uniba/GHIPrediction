@@ -92,3 +92,5 @@ target/
 
 
 mlartifacts/
+
+src/models/params

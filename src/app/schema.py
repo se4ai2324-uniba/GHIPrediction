@@ -10,12 +10,9 @@ class Params(BaseModel):
 
 
 class Results(BaseModel):
-    name:str
-    results:str
+    r2:str
+    rmse:str
 
-
-
-
-
-
-#print(Xgbooster(name="xgbooster", params={'max_depth':[4,5,6], 'n_estimator':[100,160,10]}))
+class Models(BaseModel):
+    #model: Params
+    res: Results
