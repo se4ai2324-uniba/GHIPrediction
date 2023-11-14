@@ -21,7 +21,7 @@ def save_metrics(results, file_name):
 
 def save_model(model, name):
     """function to save the model"""
-    joblib.dump(model,f"models/{name}.pkl" )
+    joblib.dump(model, f"models/{name}.pkl" )
 
 def use_split(csv1, csv2):
     """function to split data"""

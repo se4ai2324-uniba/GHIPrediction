@@ -35,16 +35,4 @@ def write_params(dati_dict):
     nome_file_csv = 'src/models/params/knr_params.csv'
     df.to_csv(nome_file_csv, index=False)
 
-def predict(data):
-    model_path = 'models/linear.pkl'
-    model = joblib.load(model_path)
-    scaler = RobustScaler()
-    scaler.fit(data)
-    transformed = scaler.transform(data)
-    predizione = model.predict(transformed)
-    print(predizione)
-    return predizione
-
-
-predict([[0.5, 0.30, 0.9]])
-#train_knr()
+train_knr()

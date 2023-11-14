@@ -19,5 +19,8 @@ class Models(BaseModel):
 
 class Predict(BaseModel):
     temperature: float
-    rel_humidity: float
     dni: float
+    humidity: float
+
+class GHI(BaseModel):
+    predicted_GHI : float
