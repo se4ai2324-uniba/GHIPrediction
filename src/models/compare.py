@@ -72,5 +72,6 @@ def compare(i, array1, array2, array3, array4):
 best_metrics = compare_r2(linear, random_forest, xgb_metrics, knr)
 best_model = compare(best_metrics, linear, random_forest, knr, xgb_metrics)
 load_model = pickle.load(open(f"models/{best_model}.pkl", 'rb'))
+
 save_model(load_model, 'best_model')
 save_metrics(best_metrics, 'best_metrics')
