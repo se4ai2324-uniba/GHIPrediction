@@ -1,6 +1,7 @@
 
 """module for preprocessing the data"""
 import pandas as pd
+import joblib
 from sklearn.preprocessing import RobustScaler
 
 class Preprocessing:
@@ -23,6 +24,7 @@ class Preprocessing:
         scaler = RobustScaler()
         tmp = current_df.drop('GHI', axis = 1)
         scaler.fit(tmp)
+        joblib.dump(scaler, f"models/scaler.pkl" )
         df_transformed = scaler.transform(tmp)
         return df_transformed
 

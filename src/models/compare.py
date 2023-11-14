@@ -30,7 +30,7 @@ def compare_r2(array1, array2, array3, array4):
     lista_num = []
     lista = []
     for i in [array1, array2, array3, array4]:
-        lista_num = array1[:2]
+        lista_num = i[:2]
         lista_num = [float(element) for element in lista_num]
         lista.append(lista_num)
     maximum = 1000

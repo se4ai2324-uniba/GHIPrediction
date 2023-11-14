@@ -2,6 +2,7 @@
 import mlflow
 import dagshub
 import pandas as pd
+import joblib
 from sklearn import linear_model
 from sklearn.model_selection import cross_val_score
 from mlflow.models import infer_signature
