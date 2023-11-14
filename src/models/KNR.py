@@ -2,6 +2,8 @@
 import csv
 import pandas as pd
 from sklearn.neighbors import KNeighborsRegressor
+import joblib
+from sklearn.preprocessing import RobustScaler
 from train_model import best_hyper, grid_log, save_metrics
 from train_model import save_model, stampa, predict_and_results, use_split
 
@@ -33,4 +35,16 @@ def write_params(dati_dict):
     nome_file_csv = 'src/models/params/knr_params.csv'
     df.to_csv(nome_file_csv, index=False)
 
-train_knr()
+def predict(data):
+    model_path = 'models/linear.pkl'
+    model = joblib.load(model_path)
+    scaler = RobustScaler()
+    scaler.fit(data)
+    transformed = scaler.transform(data)
+    predizione = model.predict(transformed)
+    print(predizione)
+    return predizione
+
+
+predict([[0.5, 0.30, 0.9]])
+#train_knr()

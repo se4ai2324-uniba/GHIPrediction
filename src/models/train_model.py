@@ -1,11 +1,11 @@
 """module to implemen utility functions for training and testing"""
 import sys
-import pickle
 import math
 import dagshub
 import mlflow
 import pandas as pd
 import xgboost as xg
+import joblib
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import r2_score, mean_squared_error
 from mlflow.models import infer_signature
@@ -21,7 +21,7 @@ def save_metrics(results, file_name):
 
 def save_model(model, name):
     """function to save the model"""
-    pickle.dump(model, open(f"models/{name}.pkl", "wb"))
+    joblib.dump(model,f"models/{name}.pkl" )
 
 def use_split(csv1, csv2):
     """function to split data"""
