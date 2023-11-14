@@ -1,11 +1,14 @@
 """module for APIs"""
 from fastapi import FastAPI, Request
-from src.app.schema import Params, Results, Models
+from src.app.schema import Params, Results, Models, Predict
 import pandas as pd
 from pathlib import Path
 from functools import wraps
 from datetime import datetime
 from http import HTTPStatus
+import joblib
+from sklearn.preprocessing import RobustScaler
+import json
 
 app=FastAPI()
 
@@ -43,6 +46,7 @@ async def models(name:str):
     
     return {f"Il modello selezionato è: {name}"}
 
+
 @app.get("/model/{name}/params")
 async def model_results(name):
     model = Params
@@ -60,6 +64,24 @@ async def model_results(name):
     return {"name": model.name, "params": model.params}
 
 
+@app.post("/prediction")
+def predict_GHI(request: Predict):
+    
+    data = [[request.temperature, request.rel_humidity, request.dni]]
+    
+    ghi = predict(data)
+    return {"ghi": ghi}
+    #print(type(data))
+
+
+
+
+
+
+
+
+#USEFUL FUNCTIONS
+
 def read_params(path, name):
     model = Models
     params = pd.read_csv(f'src/models/params/{path}_params.csv', delimiter = ',')
@@ -67,3 +89,18 @@ def read_params(path, name):
     model.name = name
     model.params = dizionario_valori
     return model
+
+def predict(data):
+    model_path = 'models/best_model.pkl'
+    model = joblib.load(model_path)
+    scaler = RobustScaler()
+    scaler.fit(data)
+    transformed = scaler.transform(data)
+    predizione = model.predict(transformed)
+    return predizione
+
+predict_GHI({
+  "temperature": 0,
+  "rel_humidity": 0,
+  "dni": 0
+})

@@ -16,3 +16,8 @@ class Results(BaseModel):
 class Models(BaseModel):
     #model: Params
     res: Results
+
+class Predict(BaseModel):
+    temperature: float
+    rel_humidity: float
+    dni: float
