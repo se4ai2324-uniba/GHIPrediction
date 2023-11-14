@@ -1,6 +1,6 @@
 """module for APIs"""
 from fastapi import FastAPI, Request
-from src.app.schema import Params, Results, Models, Predict
+from schema import Params, Results, Models, Predict
 import pandas as pd
 from pathlib import Path
 from functools import wraps
@@ -65,14 +65,12 @@ async def model_results(name):
 
 
 @app.post("/prediction")
-def predict_GHI(request: Predict):
-    
-    data = [[request.temperature, request.rel_humidity, request.dni]]
-    
-    ghi = predict(data)
-    return {"ghi": ghi}
-    #print(type(data))
+async def predict_GHI(request: Predict)->float:
 
+
+    data = [[request.temperature, request.rel_humidity, request.dni]]
+    ghi = predict(data)
+    return ghi
 
 
 
@@ -97,10 +95,7 @@ def predict(data):
     scaler.fit(data)
     transformed = scaler.transform(data)
     predizione = model.predict(transformed)
+    print(predizione)
     return predizione
 
-predict_GHI({
-  "temperature": 0,
-  "rel_humidity": 0,
-  "dni": 0
-})
+predict([[0,3,0]])
