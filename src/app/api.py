@@ -1,14 +1,13 @@
 """module for APIs"""
-from fastapi import FastAPI, Request
-from src.app.schema import Params, Results, Models, Predict, GHI
+from fastapi import FastAPI, Response, status, HTTPException
+from schema import Params, Predict, GHI, Models, ParamsAndResults, ListModels
 import pandas as pd
 from pathlib import Path
 from functools import wraps
 from datetime import datetime
-from http import HTTPStatus
 import joblib
-from sklearn.preprocessing import RobustScaler
-import json
+import uvicorn
+from fastapi.responses import JSONResponse
 
 app=FastAPI()
 
@@ -17,39 +16,33 @@ async def root():
     return {"message":"Benvenuto nel GHI Prediction Project"}
 
 
-@app.get("/best_model/")
+@app.get("/best_model/", status_code=status.HTTP_200_OK, description="Risultati del miglior modello", response_model=ParamsAndResults)
 async def calcola_risultati():  
-    model = Params
-    results = Results
     params = pd.read_csv('src/models/params/xgb_params.csv', delimiter = ',')
     dizionario_valori = params.iloc[0].to_dict()
-    model.name = "XgBooster"
-    model.params = dizionario_valori
+    name = "XgBooster"
+    params = dizionario_valori
     with open('models/best_metrics.metrics', 'r') as file:
         prima_riga = str(file.readline().strip())
-        results.r2 = prima_riga
+        r2 = prima_riga
         seconda_riga = str(file.readline().strip())
-        results.rmse = seconda_riga
-    return {"name": model.name, "params": model.params, "r2": results.r2, "rmse": results.rmse}
+        rmse = seconda_riga
+    
+    response = ParamsAndResults(name= name, params= params, r2=r2, rmse=rmse)
+    return response
 
 
-@app.get("/models")
+@app.get("/models", status_code=status.HTTP_200_OK, description="Ritorna la lista dei modelli utilizzati", response_model=ListModels)
 async def model_list():
     model_list = ["Linear Regression", "Random Forest Regressor", "XGBooster", "K-Neighboor Regressor"]
     
     string = "I modelli usati sono: "
-    return {f"{string}{model_list}"}
+    response = ListModels(description=string, lista=model_list)
+    return response
 
 
-@app.get("/model/{name}")
-async def models(name:str):
-    
-    return {f"Il modello selezionato è: {name}"}
-
-
-@app.get("/model/{name}/params")
+@app.get("/model/{name}/params", status_code=status.HTTP_200_OK, response_model=Params, description="Lettura dei parametri dei modelli. [RF, KNR, LR, XGB]",)
 async def model_results(name):
-    model = Params
     if name == "KNR":
         model = read_params("knr", "K-Neighbor Regressor")
     elif name == "XGB":
@@ -59,12 +52,12 @@ async def model_results(name):
     elif name == "LR":
         model = read_params("lr", "linear Regression")
     else:
-        return {"Inserire nome valido"}
+        raise HTTPException(status_code=404, detail="modello non trovato, scegliere tra [LR, RF, XGB, KNR]")
 
-    return {"name": model.name, "params": model.params}
+    response = Params(name=model.name, params=model.params)
+    return response
 
-
-@app.post("/prediction")
+@app.post("/prediction", status_code=status.HTTP_200_OK, description="Usata per calcolare il GHI dati dei valori in input", response_model=GHI)
 async def predict_GHI(request: Predict)->GHI:
 
     res = GHI
@@ -74,12 +67,7 @@ async def predict_GHI(request: Predict)->GHI:
     return res
 
 
-
-
-
-
-
-#USEFUL FUNCTIONS
+#----------------USEFUL FUNCTIONS-------------------
 
 def read_params(path, name):
     model = Models
@@ -96,3 +84,7 @@ def predict(data):
     transformed = scaler.transform(data)
     predizione = model.predict(transformed)
     return predizione
+
+
+
+uvicorn.run(app, host="127.0.0.1", port="8000")
