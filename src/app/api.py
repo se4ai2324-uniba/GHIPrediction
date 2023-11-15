@@ -60,11 +60,10 @@ async def model_results(name):
 @app.post("/prediction", status_code=status.HTTP_200_OK, description="Usata per calcolare il GHI dati dei valori in input", response_model=GHI)
 async def predict_GHI(request: Predict)->GHI:
 
-    res = GHI
     data = [[request.temperature, request.dni, request.humidity]]
     ghi = predict(data)
-    res.predicted_GHI = ghi
-    return res
+    response=GHI(predicted_GHI=ghi)
+    return response
 
 
 #----------------USEFUL FUNCTIONS-------------------

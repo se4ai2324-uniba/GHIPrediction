@@ -1,2 +1,2 @@
-copy_X,fit_intercept,positive
-True,True,False
+copy_X,fit_intercept,n_jobs,positive
+True,True,,False
