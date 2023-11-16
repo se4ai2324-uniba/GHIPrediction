@@ -75,6 +75,19 @@ You can check the code quality with the command:
 pylint *path_of_module\folder_you_want_to_check* 
 ```
 
+## APIs
+The project incorporates also a module that implements a set of APIs. \
+If you want to check them out you can run the [uvicorn](https://uvicorn.org) server just by running the python module _api.py_ with the command: 
+```
+python src/app/api.py 
+```
+The server will be accessible on your [https://127.0.0.1:8000](https://127.0.0.1:8000) \
+You can also interact with the APIs through [Swagger](https://swagger.io) interface adding "/docs" to your localhost address [https://127.0.0.1:8000/docs](https://127.0.0.1:8000/docs). \
+Alternatively you can explore the automatically-generated documentation via [redoc](https://github.com/redocly/redoc) adding "/redoc" instead [https://127.0.0.1:8000/redoc](https://127.0.0.1:8000/redoc). 
+
+As for the fuction whithin the project, also the APIs have been tested with [pytest](https://docs.pytest.org/en/7.4.x/) and [Pylint](https://pylint.readthedocs.io/en/stable/index.html) (average score of 8.2/10).
+
+
 Project Organization
 ------------
 
