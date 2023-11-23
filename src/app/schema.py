@@ -3,11 +3,6 @@ import sys
 sys.path.insert(0,'src/models')
 from pydantic import BaseModel
 
-class ListModels(BaseModel):
-    """class to represent models list schema"""
-    description: str
-    lista: list
-
 class Params(BaseModel):
     """class to represent params shape schema"""
     params: dict
