@@ -3,7 +3,7 @@ import joblib
 import uvicorn
 import pandas as pd
 from fastapi import FastAPI, status, HTTPException
-from schema import Params, Predict, GHI, Models, ParamsAndResults, ListModels
+from schema import Predict, GHI, Models, ParamsAndResults
 
 app=FastAPI()
 
@@ -30,38 +30,6 @@ async def best_results():
         seconda_riga = str(file.readline().strip())
         rmse = seconda_riga
     response = ParamsAndResults(name= name, params= params, r2=r2, rmse=rmse)
-    return response
-
-
-@app.get("/models", status_code=status.HTTP_200_OK,
-description="this function returns all the models used in the comparison",
-response_model=ListModels)
-async def model_list():
-    """function to list every model""" 
-    models_list = ["Linear Regression", "Random Forest Regressor",
-     "XGBooster", "K-Neighboor Regressor"]
-
-    string = "I modelli usati sono: "
-    response = ListModels(description=string, lista=models_list)
-    return response
-
-
-@app.get("/model/{name}/params", status_code=status.HTTP_200_OK, response_model=Params,
-description="this function returns the parameters for every model. [RF, KNR, LR, XGB]",)
-async def model_results(name):
-    """function to list params of every model""" 
-    if name == "KNR":
-        model = read_params("knr", "K-Neighbor Regressor")
-    elif name == "XGB":
-        model = read_params("xgb", "XgBooster")
-    elif name == "RF":
-        model = read_params("rf", "Random Forest")
-    elif name == "LR":
-        model = read_params("lr", "linear Regression")
-    else:
-        raise HTTPException(status_code=404,
-        detail="modello non trovato, scegliere tra [LR, RF, XGB, KNR]")
-    response = Params(name=model.name, params=model.params)
     return response
 
 
