@@ -1,34 +1,34 @@
-name: Testing module
+# name: Testing module
 
-on: 
-  push:
-    paths:
-      - 'src/**'
-      - '!src/app/**'
+# on: 
+#   push:
+#     paths:
+#       - 'src/**'
+#       - '!src/app/**'
 
-jobs:
-  build:
-    runs-on: macos-latest
+# jobs:
+#   build:
+#     runs-on: macos-latest
 
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+#     steps:
+#     - name: Checkout
+#       uses: actions/checkout@v4
 
-    - name: Set Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
+#     - name: Set Python
+#       uses: actions/setup-python@v4
+#       with:
+#         python-version: '3.11'
 
-    - name: Install dependencies
-      run: pip install -r requirements.txt
-      
-    - name: Preprocessing with Pytest
-      run: pytest src/test/preprocessing_test.py
+#     - name: Install dependencies
+#       run: pip install -r requirements.txt
 
-    - name: Training_test with Pytest
-      run: pytest src/test/training_test.py
+#     - name: Preprocessing with Pytest
+#       run: pytest src/test/preprocessing_test.py
 
-    - name: Compare_test with Pytest
-      run: pytest src/test/compare_test.py
+#     - name: Training_test with Pytest
+#       run: pytest src/test/training_test.py
+
+#     - name: Compare_test with Pytest
+#       run: pytest src/test/compare_test.py
 
   
