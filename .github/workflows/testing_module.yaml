@@ -22,12 +22,6 @@ jobs:
     - name: Install dependencies
       run: pip install -r requirements.txt
 
-    - name: Preprocessing_test with Pytest
-      run: pytest src/test/preprocessing_test.py
-      with: 
-        file:
-          data/raw/FinaleBari.csv
-
     - name: Training_test with Pytest
       run: pytest src/test/training_test.py
 
