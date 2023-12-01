@@ -21,11 +21,10 @@ jobs:
 
     - name: Install dependencies
       run: pip install -r requirements.txt
+      
+    - name: Preprocessing with Pytest
+      run: pytest src/test/preprocessing_test.py
 
-    - name: Leggi il contenuto del file
-      run: |
-        file_content=$(cat data/raw/FinaleBari.csv)
-        echo "Contenuto del file: $file_content"
     - name: Training_test with Pytest
       run: pytest src/test/training_test.py
 
