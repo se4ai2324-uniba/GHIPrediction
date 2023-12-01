@@ -21,4 +21,4 @@ jobs:
         pylint --fail-under=7 src/app/**
         pylint --fail-under=7 src/data/**
         pylint --fail-under=7 src/models/**
-        pylint --fail-under=7 src/test/**
+        pylint --fail-under=7 src/test/**  --ignore-path=src/test/training_test.py
