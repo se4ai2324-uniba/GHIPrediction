@@ -24,6 +24,7 @@ jobs:
 
     - name: Preprocessing_test with Pytest
       run: pytest src/test/preprocessing_test.py
+      with: data/raw/FinaleBari.csv
 
     - name: Training_test with Pytest
       run: pytest src/test/training_test.py
