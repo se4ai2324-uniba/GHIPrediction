@@ -63,4 +63,4 @@ def predict(data):
     return predizione
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port="8000") #test action
+    uvicorn.run(app, host="0.0.0.0", port="8000")
