@@ -1,0 +1,15 @@
+[
+    {
+        "type": "convention",
+        "module": "schema",
+        "obj": "",
+        "line": 4,
+        "column": 0,
+        "endLine": 4,
+        "endColumn": 30,
+        "path": "src/app/schema.py",
+        "symbol": "wrong-import-position",
+        "message": "Import \"from pydantic import BaseModel\" should be placed at the top of the module",
+        "message-id": "C0413"
+    }
+]

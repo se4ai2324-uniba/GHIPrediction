@@ -1,0 +1,15 @@
+[
+    {
+        "type": "warning",
+        "module": "src.models.train_model",
+        "obj": "grid_log",
+        "line": 72,
+        "column": 31,
+        "endLine": 72,
+        "endColumn": 34,
+        "path": "src/models/train_model.py",
+        "symbol": "unused-variable",
+        "message": "Unused variable 'run'",
+        "message-id": "W0612"
+    }
+]

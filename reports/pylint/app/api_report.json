@@ -1,0 +1,41 @@
+[
+    {
+        "type": "convention",
+        "module": "api",
+        "obj": "",
+        "line": 18,
+        "column": 32,
+        "endLine": null,
+        "endColumn": null,
+        "path": "src/app/api.py",
+        "symbol": "trailing-whitespace",
+        "message": "Trailing whitespace",
+        "message-id": "C0303"
+    },
+    {
+        "type": "warning",
+        "module": "api",
+        "obj": "",
+        "line": 18,
+        "column": 1,
+        "endLine": null,
+        "endColumn": null,
+        "path": "src/app/api.py",
+        "symbol": "fixme",
+        "message": "TODO modify xgb into best_model ",
+        "message-id": "W0511"
+    },
+    {
+        "type": "warning",
+        "module": "api",
+        "obj": "",
+        "line": 5,
+        "column": 0,
+        "endLine": 5,
+        "endColumn": 50,
+        "path": "src/app/api.py",
+        "symbol": "unused-import",
+        "message": "Unused HTTPException imported from fastapi",
+        "message-id": "W0611"
+    }
+]
