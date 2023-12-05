@@ -1,0 +1,28 @@
+[
+    {
+        "type": "warning",
+        "module": "src.data.preprocessing",
+        "obj": "Preprocessing.scalarization",
+        "line": 27,
+        "column": 28,
+        "endLine": 27,
+        "endColumn": 48,
+        "path": "src/data/preprocessing.py",
+        "symbol": "f-string-without-interpolation",
+        "message": "Using an f-string that does not have any interpolated variables",
+        "message-id": "W1309"
+    },
+    {
+        "type": "convention",
+        "module": "src.data.preprocessing",
+        "obj": "Preprocessing.find_minmax_ghi",
+        "line": 31,
+        "column": 4,
+        "endLine": 31,
+        "endColumn": 23,
+        "path": "src/data/preprocessing.py",
+        "symbol": "missing-function-docstring",
+        "message": "Missing function or method docstring",
+        "message-id": "C0116"
+    }
+]

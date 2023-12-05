@@ -1,0 +1,80 @@
+[
+    {
+        "type": "convention",
+        "module": "src.models.XGBOOSTER",
+        "obj": "",
+        "line": 1,
+        "column": 0,
+        "endLine": null,
+        "endColumn": null,
+        "path": "src/models/XGBOOSTER.py",
+        "symbol": "invalid-name",
+        "message": "Module name \"XGBOOSTER\" doesn't conform to snake_case naming style",
+        "message-id": "C0103"
+    },
+    {
+        "type": "error",
+        "module": "src.models.XGBOOSTER",
+        "obj": "",
+        "line": 5,
+        "column": 0,
+        "endLine": 5,
+        "endColumn": 44,
+        "path": "src/models/XGBOOSTER.py",
+        "symbol": "import-error",
+        "message": "Unable to import 'train_model'",
+        "message-id": "E0401"
+    },
+    {
+        "type": "error",
+        "module": "src.models.XGBOOSTER",
+        "obj": "",
+        "line": 6,
+        "column": 0,
+        "endLine": 6,
+        "endColumn": 88,
+        "path": "src/models/XGBOOSTER.py",
+        "symbol": "import-error",
+        "message": "Unable to import 'train_model'",
+        "message-id": "E0401"
+    },
+    {
+        "type": "convention",
+        "module": "src.models.XGBOOSTER",
+        "obj": "write_params",
+        "line": 31,
+        "column": 0,
+        "endLine": 31,
+        "endColumn": 16,
+        "path": "src/models/XGBOOSTER.py",
+        "symbol": "missing-function-docstring",
+        "message": "Missing function or method docstring",
+        "message-id": "C0116"
+    },
+    {
+        "type": "convention",
+        "module": "src.models.XGBOOSTER",
+        "obj": "",
+        "line": 4,
+        "column": 0,
+        "endLine": 4,
+        "endColumn": 10,
+        "path": "src/models/XGBOOSTER.py",
+        "symbol": "wrong-import-order",
+        "message": "standard import \"import csv\" should be placed before \"import pandas as pd\"",
+        "message-id": "C0411"
+    },
+    {
+        "type": "warning",
+        "module": "src.models.XGBOOSTER",
+        "obj": "",
+        "line": 4,
+        "column": 0,
+        "endLine": 4,
+        "endColumn": 10,
+        "path": "src/models/XGBOOSTER.py",
+        "symbol": "unused-import",
+        "message": "Unused import csv",
+        "message-id": "W0611"
+    }
+]

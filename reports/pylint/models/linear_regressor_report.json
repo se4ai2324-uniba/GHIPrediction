@@ -1,0 +1,54 @@
+[
+    {
+        "type": "error",
+        "module": "src.models.linear_regressor",
+        "obj": "",
+        "line": 9,
+        "column": 0,
+        "endLine": 9,
+        "endColumn": 43,
+        "path": "src/models/linear_regressor.py",
+        "symbol": "import-error",
+        "message": "Unable to import 'train_model'",
+        "message-id": "E0401"
+    },
+    {
+        "type": "error",
+        "module": "src.models.linear_regressor",
+        "obj": "",
+        "line": 10,
+        "column": 0,
+        "endLine": 10,
+        "endColumn": 67,
+        "path": "src/models/linear_regressor.py",
+        "symbol": "import-error",
+        "message": "Unable to import 'train_model'",
+        "message-id": "E0401"
+    },
+    {
+        "type": "convention",
+        "module": "src.models.linear_regressor",
+        "obj": "write_params",
+        "line": 54,
+        "column": 0,
+        "endLine": 54,
+        "endColumn": 16,
+        "path": "src/models/linear_regressor.py",
+        "symbol": "missing-function-docstring",
+        "message": "Missing function or method docstring",
+        "message-id": "C0116"
+    },
+    {
+        "type": "warning",
+        "module": "src.models.linear_regressor",
+        "obj": "",
+        "line": 5,
+        "column": 0,
+        "endLine": 5,
+        "endColumn": 13,
+        "path": "src/models/linear_regressor.py",
+        "symbol": "unused-import",
+        "message": "Unused import joblib",
+        "message-id": "W0611"
+    }
+]
