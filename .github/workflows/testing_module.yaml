@@ -25,6 +25,11 @@ jobs:
     - name: Install
       run: dvc repro
 
+    - name: dvc pipeline 
+      run: |
+        dvc pull
+        dvc repro
+
     - name: Preprocessing with Pytest
       run: pytest src/test/preprocessing_test.py
 
