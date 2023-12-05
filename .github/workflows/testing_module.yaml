@@ -22,14 +22,13 @@ jobs:
     - name: Install dependencies
       run: pip install -r requirements.txt
 
-      # - name: dvc pipeline 
-      #   run: |
-      #     dvc pull
-      #     dvc repro
+    - name: dvc pipeline 
+      run: |
+        dvc pull
+        dvc repro
 
-#     - name: Preprocessing with Pytest
-#       run: pytest src/test/preprocessing_test.py
-
+    - name: Preprocessing with Pytest
+      run: pytest src/test/preprocessing_test.py
 
     - name: Training_test with Pytest
       run: pytest src/test/training_test.py
