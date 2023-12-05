@@ -5,6 +5,7 @@ mlflow
 dvc
 dagshub
 pylint
+dvc_gdrive
 great_expectations
 pytest
 fastapi
