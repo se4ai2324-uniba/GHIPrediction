@@ -1,0 +1,41 @@
+[
+    {
+        "type": "convention",
+        "module": "src.models.compare",
+        "obj": "",
+        "line": 79,
+        "column": 0,
+        "endLine": null,
+        "endColumn": null,
+        "path": "src/models/compare.py",
+        "symbol": "trailing-newlines",
+        "message": "Trailing newlines",
+        "message-id": "C0305"
+    },
+    {
+        "type": "error",
+        "module": "src.models.compare",
+        "obj": "",
+        "line": 3,
+        "column": 0,
+        "endLine": 3,
+        "endColumn": 48,
+        "path": "src/models/compare.py",
+        "symbol": "import-error",
+        "message": "Unable to import 'train_model'",
+        "message-id": "E0401"
+    },
+    {
+        "type": "refactor",
+        "module": "src.models.compare",
+        "obj": "",
+        "line": 74,
+        "column": 25,
+        "endLine": 74,
+        "endColumn": 63,
+        "path": "src/models/compare.py",
+        "symbol": "consider-using-with",
+        "message": "Consider using 'with' for resource-allocating operations",
+        "message-id": "R1732"
+    }
+]

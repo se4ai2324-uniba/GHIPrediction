@@ -1,0 +1,54 @@
+[
+    {
+        "type": "error",
+        "module": "src.models.random_forest_regressor",
+        "obj": "",
+        "line": 5,
+        "column": 0,
+        "endLine": 5,
+        "endColumn": 44,
+        "path": "src/models/random_forest_regressor.py",
+        "symbol": "import-error",
+        "message": "Unable to import 'train_model'",
+        "message-id": "E0401"
+    },
+    {
+        "type": "error",
+        "module": "src.models.random_forest_regressor",
+        "obj": "",
+        "line": 6,
+        "column": 0,
+        "endLine": 6,
+        "endColumn": 51,
+        "path": "src/models/random_forest_regressor.py",
+        "symbol": "import-error",
+        "message": "Unable to import 'train_model'",
+        "message-id": "E0401"
+    },
+    {
+        "type": "error",
+        "module": "src.models.random_forest_regressor",
+        "obj": "",
+        "line": 7,
+        "column": 0,
+        "endLine": 7,
+        "endColumn": 59,
+        "path": "src/models/random_forest_regressor.py",
+        "symbol": "import-error",
+        "message": "Unable to import 'train_model'",
+        "message-id": "E0401"
+    },
+    {
+        "type": "convention",
+        "module": "src.models.random_forest_regressor",
+        "obj": "write_params",
+        "line": 31,
+        "column": 0,
+        "endLine": 31,
+        "endColumn": 16,
+        "path": "src/models/random_forest_regressor.py",
+        "symbol": "missing-function-docstring",
+        "message": "Missing function or method docstring",
+        "message-id": "C0116"
+    }
+]
