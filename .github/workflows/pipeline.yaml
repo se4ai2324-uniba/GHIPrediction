@@ -1,4 +1,4 @@
-name: Pipeline
+name: PreProcessing
 
 on:
   workflow_dispatch:
