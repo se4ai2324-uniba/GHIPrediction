@@ -33,11 +33,11 @@ jobs:
           run: pytest src/test/preprocessing_test.py
     job2:
       needs: [job1]
-          - name: Training_test with Pytest
-            run: pytest src/test/training_test.py
+      - name: Training_test with Pytest
+        run: pytest src/test/training_test.py
     job3: 
       needs: [job2]
-          - name: Compare_test with Pytest
-            run: pytest src/test/compare_test.py
+      - name: Compare_test with Pytest
+        run: pytest src/test/compare_test.py
 
   
