@@ -28,20 +28,11 @@ jobs:
           dvc pull
           dvc repro
 
-      preprocessing:
-          needs: build
-          steps:
-            - name: Preprocessing with Pytest
-              run: pytest src/test/preprocessing_test.py
+      - name: Preprocessing with Pytest
+        run: pytest src/test/preprocessing_test.py
 
-      training:
-          needs: preprocessing
-          steps:
-            - name: Training_test with Pytest
-              run: pytest src/test/training_test.py
+      - name: Training_test with Pytest
+        run: pytest src/test/training_test.py
 
-      compare:
-          needs: preprocessing
-          steps:
-            - name: Compare_test with Pytest
-              run: pytest src/test/compare_test.py
+      - name: Compare_test with Pytest
+        run: pytest src/test/compare_test.py
