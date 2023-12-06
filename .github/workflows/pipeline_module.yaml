@@ -29,21 +29,15 @@ jobs:
         dvc repro
 
     job1:
-      build:
-        runs-on: [macos-latest, ubuntu-latest, windows-latest]
-          - name: Preprocessing with Pytest
-            run: pytest src/test/preprocessing_test.py
+        - name: Preprocessing with Pytest
+          run: pytest src/test/preprocessing_test.py
     job2:
       needs: [job1]
-        build:
-          runs-on: [macos-latest, ubuntu-latest, windows-latest]
-            - name: Training_test with Pytest
-              run: pytest src/test/training_test.py
+          - name: Training_test with Pytest
+            run: pytest src/test/training_test.py
     job3: 
       needs: [job2]
-        build:
-          runs-on: [macos-latest, ubuntu-latest, windows-latest]
-            - name: Compare_test with Pytest
-              run: pytest src/test/compare_test.py
+          - name: Compare_test with Pytest
+            run: pytest src/test/compare_test.py
 
   
