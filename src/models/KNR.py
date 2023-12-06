@@ -36,3 +36,4 @@ def write_params(dati_dict):
     df.to_csv(nome_file_csv, index=False)
 
 train_knr()
+
