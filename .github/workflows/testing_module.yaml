@@ -1,7 +1,7 @@
 name: Testing module
 
 on: 
-  workflow-dispatch:
+  workflow_dispatch:
     # paths:
     #   - 'src/**'
     #   - '!src/app/**'
