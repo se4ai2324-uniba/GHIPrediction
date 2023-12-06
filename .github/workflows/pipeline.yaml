@@ -27,11 +27,11 @@ jobs:
         run: |
           dvc pull
 
-      - name: Preprocessing with Pytest
-        run: pytest src/test/preprocessing_test.py
+      - name: Run make_dataset
+        run: pytest src/data/make_dataset.py
+      
+      - name: Run preprocessing
+        run: pytest src/data/preprocessing.py
 
-      - name: Training_test with Pytest
-        run: pytest src/test/training_test.py
-
-      - name: Compare_test with Pytest
-        run: pytest src/test/compare_test.py
+      - name: Run split_dataset
+        run: pytest src/data/split_dataset.py
