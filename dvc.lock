@@ -194,7 +194,7 @@ stages:
   Evaluate:
     cmd: python3 src/models/evaluate.py
     deps:
-    - path: src/models/KNR.py
+    - path: src/models/knr.py
       hash: md5
       md5: 901526a1a361f93f2e04d8aff7657b69
       size: 1044
@@ -206,7 +206,7 @@ stages:
       hash: md5
       md5: 34c6810a3fca4236e58e958969d466f9
       size: 1032
-    - path: src/models/XGBOOSTER.py
+    - path: src/models/xgbooster.py
       hash: md5
       md5: 83d373731b1892a16408b05c757e97c8
       size: 1033
