@@ -28,10 +28,13 @@ jobs:
           dvc pull
 
       - name: Run make_dataset
-        run: pytest src/data/make_dataset.py
+        run: python src/data/make_dataset.py
       
       - name: Run preprocessing
-        run: pytest src/data/preprocessing.py
+        run: python src/data/preprocessing.py
 
       - name: Run split_dataset
-        run: pytest src/data/split_dataset.py
+        run: python src/data/split_dataset.py
+
+      - name: Run Xgbooster
+        run: python src/models/xgbooster.py
