@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "ghi-prediction",
+  "private_key_id": "6869d952fb04f0eeb7282a7af81461c12278dc0b",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDbRUa7eVbUSRkS\nvXBb4eoTDY5qVSoA9Yk6IkTJMnEhbaM+xB9spBOAXgY1Ke5buPUgiNuH3HZGr3Q2\nddhBy1ozIKZlrf7akO3e0CidFq1aju3Dq/MgaBXdAoTh4zvgy35Oz+yNl7Oi3u9v\n2y9ILizDqVqFQ6sVs+6EHn6+jxcVsrAzUil9bJL9ttrdCXa4H2VUWUKf2hQD8t5f\na/fpVtniBPqdRhEXBYYoqKIEjs3KzwDS1sjrHSe1GJn6WDgbxAa7BCkKyUKC35Hk\nBUle3UPJYSmgGw2iZlN+6GGguEplbcMA3NOc69+Hy9dIV5SFTSgxnEDPT5dK6WRy\n4k8vpfUtAgMBAAECggEAICqDe9ELCc1HXlZn+zKi8fSVJcgkh0t9vAd268T4j5zT\ny8tdiMRxD+27H2VtUAtL+l/ZRI700t2+QJb9CHnaW5G4l0X1Ev8bxgnnS1QeTiCV\nhJTe76wVOPy7nZ+GEy4G82zRGNxeP9BQc6pFv2L2siVP4CjTGjXxEXSfxziafFYa\nu59YD1S/kPWjyJjYNC6Z0FL9dNLU2IfPQrQJG2MBUyEViwahcHBiyY3KiNCQW0tQ\ny2zTXjQWqHbEyKrLhMlgWgpcBR6rh73sFcsg0AAiLwOzmzUMwXaKxaj6/p0/sIng\nKFHyPH6AgJ/olvf+aIrmyjKtJOKHx0GmePYtlvuNwQKBgQDt87NI7hCYrE9s8IUt\n0nvPrLD+CaQtuzGB+nKO0qoOzAse2S/BSm8JK2u68wa2G3zl7BlBHpsxI56YIc4l\nTrkpsD0p0B+B+WOQTIU/apHAgGS0MNQs7WNVxcOD1AGKu+E3UOCy21z/ynOx2zba\nBKTzzpNThpOfiOBGwnUbvnPFhQKBgQDr5tdj0TcMODw4IR3aT5iq03ceaEvnJz1z\nwpAurreIMXHunZQkeUz2d4z/LVrmiJzSByFB2MVcpQlkOV6PARpG+6/h5i5lCGhA\nwrYhaPP0osc9YrDpKTv36bhCut3iLXmRbxA+aGNxrvRQD4rG8zp2ZQUA5NXVGByr\nA29RBXuNiQKBgQDquz8fMIl6snBfnR0jyMGOamLnF4e3/TOnbvJXZgWQN0S5F7L+\nUHkcaJMLhvYV6yPYhIGdNZ4OaX7nwGFleDU8pLiRaNfMFcJb9MB1gKFrbrzo7EpC\nT6NwV3i5sQgcXZ6cPNKMXc1uH77lssR3aaF3SU8YVGeINzRXWTjBN61pKQKBgGZu\neO5NxRJYRMW2k4jc8RST9/BLJ1I6trNSM1sh4G2R0r/iypW/2gxXQvD2l7bscPO9\nxtIZtzEQNHDBfG6p8ugJl4iGc3TJXsNoCL+fG/cIy2y7Msg7cF+oq6rGC1yPlG7z\nA+GlYDDX4Bv3c7IJoUQRf0exFayO6LvVJPvQXqLJAoGBALkYHTt2/VXnkAG0unrR\nAl65WGD+Etj3IFiNrVPJffo9j7PxAVTIrc6QNp4wI1qUAws2H1/Gv9oDugce1JZZ\nJeDT1kaSk1A3AcfvAYmfJw5enJ5hWX8kVUkuhzstHJUNnvx6Jg3jvZCgHGZVG59q\nH1JEzr7a5k5DGxw2joHdGbR3\n-----END PRIVATE KEY-----\n",
+  "client_email": "gdrive-api@ghi-prediction.iam.gserviceaccount.com",
+  "client_id": "114106129697899199591",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/gdrive-api%40ghi-prediction.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
