@@ -29,9 +29,10 @@ jobs:
           dvc repro
 
       preprocessing:
-        steps:
-          - name: Preprocessing with Pytest
-            run: pytest src/test/preprocessing_test.py
+          needs: build
+          steps:
+            - name: Preprocessing with Pytest
+              run: pytest src/test/preprocessing_test.py
 
       training:
           needs: preprocessing
