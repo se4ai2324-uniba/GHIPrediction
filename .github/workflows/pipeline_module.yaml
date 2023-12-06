@@ -1,6 +1,49 @@
+# name: Pipeline
+
+# on: 
+#   workflow_dispatch:
+
+# jobs:
+#   build:
+#     runs-on: [macos-latest, ubuntu-latest, windows-latest]
+
+#     steps:
+#     - name: Checkout
+#       uses: actions/checkout@v4
+
+#     - name: Set Python
+#       uses: actions/setup-python@v4
+#       with:
+#         python-version: '3.11'
+
+#     - name: Install dependencies
+#       run: pip install -r requirements.txt
+
+#     - uses: iterative/setup-dvc@v1
+  
+#     - name: Pull data with DVC
+#       env:
+#         GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS }}
+#       run: |
+#         dvc pull
+#         dvc repro
+
+#     job1:
+#         - name: Preprocessing with Pytest
+#           run: pytest src/test/preprocessing_test.py
+#     job2:
+#       needs: [job1]
+#       - name: Training_test with Pytest
+#         run: pytest src/test/training_test.py
+#     job3: 
+#       needs: [job2]
+#       - name: Compare_test with Pytest
+#         run: pytest src/test/compare_test.py
+
+  
 name: Pipeline
 
-on: 
+on:
   workflow_dispatch:
 
 jobs:
@@ -8,36 +51,42 @@ jobs:
     runs-on: [macos-latest, ubuntu-latest, windows-latest]
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Set Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
+      - name: Set Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
 
-    - name: Install dependencies
-      run: pip install -r requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
-    - uses: iterative/setup-dvc@v1
+      - uses: iterative/setup-dvc@v1
   
-    - name: Pull data with DVC
-      env:
-        GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS }}
-      run: |
-        dvc pull
-        dvc repro
+      - name: Pull data with DVC
+        env:
+          GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS }}
+        run: |
+          dvc pull
+          dvc repro
 
-    job1:
-        - name: Preprocessing with Pytest
-          run: pytest src/test/preprocessing_test.py
-    job2:
-      needs: [job1]
+  job1:
+    runs-on: [macos-latest, ubuntu-latest, windows-latest]
+    steps:
+      - name: Preprocessing with Pytest
+        run: pytest src/test/preprocessing_test.py
+
+  job2:
+    needs: job1
+    runs-on: [macos-latest, ubuntu-latest, windows-latest]
+    steps:
       - name: Training_test with Pytest
         run: pytest src/test/training_test.py
-    job3: 
-      needs: [job2]
+
+  job3:
+    needs: job2
+    runs-on: [macos-latest, ubuntu-latest, windows-latest]
+    steps:
       - name: Compare_test with Pytest
         run: pytest src/test/compare_test.py
-
-  
