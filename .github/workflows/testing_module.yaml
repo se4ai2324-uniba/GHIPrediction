@@ -1,10 +1,10 @@
 name: Testing module
 
 on: 
-  workflow-dispatcher:
-    paths:
-      - 'src/**'
-      - '!src/app/**'
+  workflow-dispatch:
+    # paths:
+    #   - 'src/**'
+    #   - '!src/app/**'
 
 jobs:
   build:
