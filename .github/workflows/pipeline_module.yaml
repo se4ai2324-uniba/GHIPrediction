@@ -28,22 +28,19 @@ jobs:
           dvc pull
           dvc repro
 
-      - job1:
-        runs-on: ubuntu-latest
+      preprocessing:
         steps:
           - name: Preprocessing with Pytest
             run: pytest src/test/preprocessing_test.py
 
-      - job2:
-          needs: job1
-          runs-on: ubuntu-latest
+      training:
+          needs: preprocessing
           steps:
             - name: Training_test with Pytest
               run: pytest src/test/training_test.py
 
-      - job3:
-          needs: job2
-          runs-on: ubuntu-latest
+      compare:
+          needs: preprocessing
           steps:
             - name: Compare_test with Pytest
               run: pytest src/test/compare_test.py
