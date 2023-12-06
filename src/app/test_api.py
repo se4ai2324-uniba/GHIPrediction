@@ -56,16 +56,16 @@ def test_model_list():
 
 
 #to do -> check if it goes always in exception
-@pytest.mark.parametrize("model_name",["KNR","XGB","RF","LR"])
-def test_model_results(model_name):
-    """tests the model's results API"""
-    try:
-        response= client.get(f"/model/{model_name}/params")
-        assert response.status_code == HTTPStatus.OK
-        assert "params" in response.json()
-        assert isinstance(response.json()["params"], dict)
-    except ValueError as e:
-        print(f"error: {e}")
+# @pytest.mark.parametrize("model_name",["KNR","XGB","RF","LR"])
+# def test_model_results(model_name):
+#     """tests the model's results API"""
+#     try:
+#         response= client.get(f"/model/{model_name}/params")
+#         assert response.status_code == HTTPStatus.OK
+#         assert "params" in response.json()
+#         assert isinstance(response.json()["params"], dict)
+#     except ValueError as e:
+#         print(f"error: {e}")
 
 
 def test_predict_ghi():

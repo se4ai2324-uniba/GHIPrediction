@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  Run-preprocessing:
     runs-on: ubuntu-latest
 
     steps:
@@ -35,6 +35,3 @@ jobs:
 
       - name: Run split_dataset
         run: python src/data/split_dataset.py
-
-      - name: Run Xgbooster
-        run: python src/models/xgbooster.py
