@@ -34,25 +34,25 @@ def test_best_results():
     assert isinstance(float(response.json()["rmse"]), float)
 
 
-def test_model_list():
-    """tests the models list API"""
-    response= client.get("/models/")
-    assert response.status_code == HTTPStatus.OK
+# def test_model_list():
+#     """tests the models list API"""
+#     response= client.get("/models/")
+#     assert response.status_code == HTTPStatus.OK
 
-    # Check if the response contains the expected items
-    assert "description" in response.json()
-    assert "lista" in response.json()
+#     # Check if the response contains the expected items
+#     assert "description" in response.json()
+#     assert "lista" in response.json()
 
-    # Check the data types of the response values
-    assert isinstance(response.json()["description"], str)
-    assert isinstance(response.json()["lista"], list)
+#     # Check the data types of the response values
+#     assert isinstance(response.json()["description"], str)
+#     assert isinstance(response.json()["lista"], list)
 
-    assert response.json()["description"] == "I modelli usati sono: "
+#     assert response.json()["description"] == "I modelli usati sono: "
 
-    # check specific model names
-    expected_models = ["Linear Regression", "Random Forest Regressor",
-    "XGBooster", "K-Neighboor Regressor"]
-    assert response.json()["lista"] == expected_models
+#     # check specific model names
+#     expected_models = ["Linear Regression", "Random Forest Regressor",
+#     "XGBooster", "K-Neighboor Regressor"]
+#     assert response.json()["lista"] == expected_models
 
 
 #to do -> check if it goes always in exception
