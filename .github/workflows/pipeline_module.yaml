@@ -1,4 +1,4 @@
-name: Testing module
+name: Pipeline
 
 on: 
   workflow_dispatch:
