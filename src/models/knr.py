@@ -36,7 +36,7 @@ def write_params(dati_dict):
     nome_file_csv = 'src/models/params/knr_params.csv'
     df.to_csv(nome_file_csv, index=False)
 
-tracker=EmissionsTracker(output_dir="reports\codecarbon", output_file="knr_emissions.csv")
+tracker=EmissionsTracker(output_dir="reports/codecarbon", output_file="knr_emissions.csv")
 tracker.start()
 train_knr()
 tracker.stop()

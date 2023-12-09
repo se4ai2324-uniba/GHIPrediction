@@ -70,7 +70,7 @@ def compare(i, array1, array2, array3, array4):
             model = array4[2]
     return model
 
-tracker=EmissionsTracker(output_dir="reports\codecarbon", output_file="compare_emissions.csv")
+tracker=EmissionsTracker(output_dir="reports/codecarbon", output_file="compare_emissions.csv")
 tracker.start()
 best_metrics = compare_r2(linear, random_forest, xgb_metrics, knr)
 best_model = compare(best_metrics, linear, random_forest, knr, xgb_metrics)

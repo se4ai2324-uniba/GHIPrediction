@@ -33,7 +33,7 @@ class Preprocessing:
         valore_minimo_colonna = df['GHI'].min()
         return valore_massimo_colonna, valore_minimo_colonna
 
-tracker=EmissionsTracker(output_dir="reports\codecarbon", output_file="preprocessing_emissions.csv")
+tracker=EmissionsTracker(output_dir="reports/codecarbon", output_file="preprocessing_emissions.csv")
 tracker.start()
 preprocessing = Preprocessing()
 final_df = preprocessing.pre_processing()
