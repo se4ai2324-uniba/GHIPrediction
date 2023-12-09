@@ -1,6 +1,7 @@
 """module for splitting the dataset"""
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from codecarbon import EmissionsTracker
 
 class Split():
     """class representing the splitting process"""
@@ -36,6 +37,8 @@ x_test = x_test.rename(columns={'Relative Humidity': 'x_test'})
 y_train = y_train.rename(columns={'GHI': 'y_train'})
 y_test = y_test.rename(columns={'GHI': 'y_test'})
 
+tracker=EmissionsTracker(output_dir="reports\codecarbon", output_file="split_dataset_emissions.csv")
+tracker.start()
 # Concatena i DataFrame in un unico DataFrame
 concatenated_train = pd.concat([x_train, y_train], axis = 1, ignore_index=True)
 concatenated_test = pd.concat([x_test, y_test], axis = 1, ignore_index=True)
@@ -46,3 +49,4 @@ concatenated_test = pd.concat([x_test, y_test], axis = 1, ignore_index=True)
 # Salva il DataFrame concatenato in un file CSV
 split.save_split(concatenated_train, "split_train")
 split.save_split(concatenated_test, "split_test")
+tracker.stop()

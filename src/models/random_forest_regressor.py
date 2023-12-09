@@ -5,6 +5,7 @@ from sklearn.ensemble import RandomForestRegressor
 from train_model import best_hyper, grid_log
 from train_model import stampa, predict_and_results
 from train_model import use_split, save_metrics, save_model
+from codecarbon import EmissionsTracker
 
 def train_random_forest():
     """function to train the model"""
@@ -33,4 +34,7 @@ def write_params(dati_dict):
     nome_file_csv = 'src/models/params/rf_params.csv'
     df.to_csv(nome_file_csv, index=False)
 
+tracker=EmissionsTracker(output_dir="reports\codecarbon", output_file="random_forest_emissions.csv")
+tracker.start()
 train_random_forest()
+tracker.stop()

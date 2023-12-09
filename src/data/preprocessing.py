@@ -1,8 +1,8 @@
-
 """module for preprocessing the data"""
 import pandas as pd
 import joblib
 from sklearn.preprocessing import RobustScaler
+from codecarbon import EmissionsTracker
 
 class Preprocessing:
     """class representing the preprocessing process"""
@@ -33,6 +33,8 @@ class Preprocessing:
         valore_minimo_colonna = df['GHI'].min()
         return valore_massimo_colonna, valore_minimo_colonna
 
+tracker=EmissionsTracker(output_dir="reports\codecarbon", output_file="preprocessing_emissions.csv")
+tracker.start()
 preprocessing = Preprocessing()
 final_df = preprocessing.pre_processing()
 max_value, min_value = preprocessing.find_minmax_ghi(final_df)
@@ -42,3 +44,4 @@ dfNew = pd.DataFrame(dfS)
 dfNew.to_csv('data/processed/PreprocessedData.csv', header=['Temperature', 'DNI',
 'Relative Humidity'])
 ghi.to_csv('data/processed/GHI.csv')
+tracker.stop()

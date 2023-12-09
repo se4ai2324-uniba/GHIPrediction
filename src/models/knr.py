@@ -6,6 +6,7 @@ import joblib
 from sklearn.preprocessing import RobustScaler
 from train_model import best_hyper, grid_log, save_metrics
 from train_model import save_model, stampa, predict_and_results, use_split
+from codecarbon import EmissionsTracker
 
 def train_knr():
     """function to train the model"""
@@ -35,5 +36,7 @@ def write_params(dati_dict):
     nome_file_csv = 'src/models/params/knr_params.csv'
     df.to_csv(nome_file_csv, index=False)
 
+tracker=EmissionsTracker(output_dir="reports\codecarbon", output_file="knr_emissions.csv")
+tracker.start()
 train_knr()
-
+tracker.stop()
