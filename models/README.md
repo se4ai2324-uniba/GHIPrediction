@@ -45,7 +45,7 @@ It can be seen from the R2 and RMSE results that the best model is the XGBooster
 We tested our model with [CodeCarbon](https://codecarbon.io) in order to trace our carbon footprint. \
 These are the results: \
 *keep in mind that the results take into account every step of our pipeline, starting from the data collection to every model comparison*
-[Total_Emissions](models\total_emissions.jpg)
+![Total_Emissions](models\total_emissions.jpg)
 
 ## Contributors:
 - Francesco Didio [<f.didio2@studenti.uniba.it>];
