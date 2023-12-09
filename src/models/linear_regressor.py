@@ -8,6 +8,7 @@ from sklearn.model_selection import cross_val_score
 from mlflow.models import infer_signature
 from train_model import predict_and_results
 from train_model import stampa, use_split, save_metrics, save_model
+from codecarbon import EmissionsTracker
 
 def train_linear():
     """function to train the model"""
@@ -56,4 +57,7 @@ def write_params(dati_dict):
     nome_file_csv = 'src/models/params/lr_params.csv'
     df.to_csv(nome_file_csv, index=False)
 
+tracker=EmissionsTracker(output_dir="reports\codecarbon", output_file="linear_regressor_emissions.csv")
+tracker.start()
 train_linear()
+tracker.stop()

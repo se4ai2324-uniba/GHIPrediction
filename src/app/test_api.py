@@ -33,41 +33,6 @@ def test_best_results():
     assert isinstance(float(response.json()["r2"]), float)
     assert isinstance(float(response.json()["rmse"]), float)
 
-
-# def test_model_list():
-#     """tests the models list API"""
-#     response= client.get("/models/")
-#     assert response.status_code == HTTPStatus.OK
-
-#     # Check if the response contains the expected items
-#     assert "description" in response.json()
-#     assert "lista" in response.json()
-
-#     # Check the data types of the response values
-#     assert isinstance(response.json()["description"], str)
-#     assert isinstance(response.json()["lista"], list)
-
-#     assert response.json()["description"] == "I modelli usati sono: "
-
-#     # check specific model names
-#     expected_models = ["Linear Regression", "Random Forest Regressor",
-#     "XGBooster", "K-Neighboor Regressor"]
-#     assert response.json()["lista"] == expected_models
-
-
-#to do -> check if it goes always in exception
-# @pytest.mark.parametrize("model_name",["KNR","XGB","RF","LR"])
-# def test_model_results(model_name):
-#     """tests the model's results API"""
-#     try:
-#         response= client.get(f"/model/{model_name}/params")
-#         assert response.status_code == HTTPStatus.OK
-#         assert "params" in response.json()
-#         assert isinstance(response.json()["params"], dict)
-#     except ValueError as e:
-#         print(f"error: {e}")
-
-
 def test_predict_ghi():
     """tests the prediction API"""
     with warnings.catch_warnings():

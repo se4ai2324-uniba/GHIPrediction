@@ -4,6 +4,7 @@ import xgboost as xg
 import csv
 from train_model import best_hyper, grid_log
 from train_model import predict_and_results, stampa, use_split, save_metrics, save_model
+from codecarbon import EmissionsTracker
 
 def train_xgbooster():
     """function to train the model"""
@@ -33,4 +34,7 @@ def write_params(dati_dict):
     nome_file_csv = 'src/models/params/xgb_params.csv'
     df.to_csv(nome_file_csv, index=False)
 
+tracker=EmissionsTracker(output_dir="reports\codecarbon", output_file="xgbooster_emissions.csv")
+tracker.start()
 train_xgbooster()
+tracker.stop()
