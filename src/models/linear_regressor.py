@@ -57,7 +57,7 @@ def write_params(dati_dict):
     nome_file_csv = 'src/models/params/lr_params.csv'
     df.to_csv(nome_file_csv, index=False)
 
-tracker=EmissionsTracker(output_dir="reports\codecarbon", output_file="linear_regressor_emissions.csv")
+tracker=EmissionsTracker(output_dir="reports/codecarbon", output_file="linear_regressor_emissions.csv")
 tracker.start()
 train_linear()
 tracker.stop()

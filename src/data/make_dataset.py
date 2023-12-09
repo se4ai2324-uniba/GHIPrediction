@@ -11,7 +11,7 @@ def final_df(df, df1, df2, name):
     df = pd.read_csv(f"data/raw/{name}", delimiter = ',')
     return df
 
-tracker=EmissionsTracker(output_dir="reports\codecarbon", output_file="make_dataset_emissions.csv")
+tracker=EmissionsTracker(output_dir="reports/codecarbon", output_file="make_dataset_emissions.csv")
 tracker.start()
 dfB1 = pd.read_csv('data/raw/2017.csv', delimiter = ',')
 dfB2 = pd.read_csv('data/raw/2018.csv', delimiter = ',')
