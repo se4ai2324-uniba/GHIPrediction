@@ -10,7 +10,7 @@ export default function General(){
 
     const callParams = async() =>{
         try{
-            const response = await axios.get('http://localhost:8000/');
+            const response = await axios.get('https://ghi-prediction-franciosodonatos-projects.vercel.app');
             setParams(response.data)
             setName(response.data.name)
             setGit(response.data.github)
