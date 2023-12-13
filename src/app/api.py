@@ -4,8 +4,16 @@ import uvicorn
 import pandas as pd
 from fastapi import FastAPI, status, HTTPException
 from schema import Predict, GHI, Models, ParamsAndResults
+from fastapi.middleware.cors import CORSMiddleware
 
 app=FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/", description="Base root")
 async def root():
