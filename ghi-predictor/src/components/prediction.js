@@ -18,7 +18,7 @@ export default function Predictor(){
     
         const callGhi = async() =>{
             try{
-                const response = await axios.post('http://localhost:8000/prediction', {
+                const response = await axios.post('https://ghi-prediction-franciosodonatos-projects.vercel.app/prediction', {
                     "temperature": temperature,
                     "dni": dni,
                     "humidity":humidity}
