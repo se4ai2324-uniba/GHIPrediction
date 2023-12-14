@@ -4,10 +4,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 
 import Grid from '@mui/material/Grid';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
+
 
 export default function Predictor(){
 
@@ -18,7 +15,7 @@ export default function Predictor(){
     
         const callGhi = async() =>{
             try{
-                const response = await axios.post('http://localhost:8000/prediction', {
+                const response = await axios.post('http://15.161.41.84/api/prediction', {
                     "temperature": temperature,
                     "dni": dni,
                     "humidity":humidity}

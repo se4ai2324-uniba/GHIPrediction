@@ -3,5 +3,5 @@ uvicorn
 pydantic
 joblib
 pandas
-xgboost
+xgboost==1.7
 scikit-learn
