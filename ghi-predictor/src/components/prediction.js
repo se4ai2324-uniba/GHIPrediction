@@ -15,7 +15,7 @@ export default function Predictor(){
     
         const callGhi = async() =>{
             try{
-                const response = await axios.post('http://15.161.41.84/api/prediction', {
+              const response = await axios.post('http://15.161.41.84/api/prediction',{
                     "temperature": temperature,
                     "dni": dni,
                     "humidity":humidity}

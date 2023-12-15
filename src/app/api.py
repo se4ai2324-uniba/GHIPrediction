@@ -2,7 +2,7 @@
 import joblib
 import uvicorn
 import pandas as pd
-from fastapi import FastAPI, status, HTTPException
+from fastapi import FastAPI, status
 from schema import Predict, GHI, Models, ParamsAndResults
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -24,7 +24,7 @@ async def root():
         "contributors":["Francesco Didio","Giovanni Federico Poli","Donato Francioso"]}
 
 #TODO modify xgb into best_model 
-@app.get("/best_model/", status_code=status.HTTP_200_OK,
+@app.get("/best_model", status_code=status.HTTP_200_OK,
 description="this function returns the best model's results", response_model=ParamsAndResults)
 async def best_results():
     """function to list results of best model""" 
