@@ -2,16 +2,13 @@ version: '3'
 
 services:
   web:
-    image: ghiprediction-web
     build: .
     ports:
       - "8000:8000"
   
   app:
-    image: predictor
     build:
       context: ./ghi-predictor
-      dockerfile: Dockerfile
     ports: 
       - "3000:3000"
     depends_on: [web]
