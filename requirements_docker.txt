@@ -13,3 +13,4 @@ uvicorn
 pydantic
 codecarbon
 npm
+prometheus_fastapi_instrumentator
