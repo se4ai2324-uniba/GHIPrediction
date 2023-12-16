@@ -9,8 +9,6 @@ RUN dvc remote modify myremote --local gdrive_service_account_json_file_path ghi
 
 RUN dvc pull || true
 
-RUN dvc repro
-
 EXPOSE 8000
 WORKDIR /ghi/
 CMD python src/app/api.py
