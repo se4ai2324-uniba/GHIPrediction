@@ -17,11 +17,16 @@ import {
 import Predictor from '../src/components/prediction';
 import BestModel from '../src/components/bestModel';
 import General from '../src/components/General';
-
-
+import React, { useEffect } from "react";
 import Tracker from "../src/components/Tracker";
 function App() {
+  
+    useEffect(() => {
+      document.title = 'Ghi-Predictor';
+    }, []);
+  
   return (
+    <>
     <Router>
       <Tracker />
       <Routes>
@@ -31,6 +36,7 @@ function App() {
         <Route path="/" element={<Navigate to={"/"} />}></Route>
       </Routes>
     </Router>
+    </>
   );
 }
 
