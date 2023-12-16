@@ -16,7 +16,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-Instrumentator().instrument(app).expose(app, endpoint="/metrics")
+Instrumentator().instrument(app).expose(app, endpoint="/metrics") #allows prometheus to gather metrics
 
 @app.get("/", description="Base root")
 async def root():
