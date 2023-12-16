@@ -94,3 +94,5 @@ target/
 mlartifacts/
 
 #src/models/params
+
+ghi-prediction-6869d952fb04.json

@@ -11,7 +11,7 @@ export default function BestModel(){
 
     const callParams = async() =>{
         try{
-            const response = await axios.get('http:/15.161.41.84/api/best_model');
+            const response = await axios.get(process.env.REACT_APP_API + '/best_model');
             setName(response.data.name)
             setLearing(response.data.params)
             setR2(response.data.r2)
