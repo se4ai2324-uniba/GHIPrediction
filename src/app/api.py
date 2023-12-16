@@ -5,6 +5,7 @@ import pandas as pd
 from fastapi import FastAPI, status
 from schema import Predict, GHI, Models, ParamsAndResults
 from fastapi.middleware.cors import CORSMiddleware
+from prometheus_fastapi_instrumentator import Instrumentator
 
 app=FastAPI()
 app.add_middleware(
@@ -14,6 +15,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+Instrumentator().instrument(app).expose(app, endpoint="/metrics")
 
 @app.get("/", description="Base root")
 async def root():
