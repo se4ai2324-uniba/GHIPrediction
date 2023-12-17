@@ -14,15 +14,18 @@ export default function BestModel(){
     const [learning, setLearing] = useState(0.0)
     const [r2, setR2] = useState(0)
     const [rmse, setRmse] = useState(0)
+    const [tableData, setTableData] = useState([]);
     
 
     const callParams = async() =>{
         try{
             const response = await axios.get(process.env.REACT_APP_API + '/best_model');
             setName(response.data.name)
-            setLearing(response.data.params)
-            setR2(response.data.r2)
-            setRmse(response.data.rmse)
+            const paramsArray = Object.entries(response.data.params).map(([key, value]) => ({ param: key, value }));
+        
+            setTableData(paramsArray);
+            setR2(response.data.r2);
+            setRmse(response.data.rmse);
               
         } catch (e) {
             
@@ -31,6 +34,7 @@ export default function BestModel(){
 
     useEffect(() => {
         callParams();
+        console.log(tableData.keys)
       }, []);
 
     return (
@@ -45,42 +49,24 @@ export default function BestModel(){
           </TableRow>
         </TableHead>
         <TableBody>
-            <TableRow
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell>Best Model</TableCell>
-              <TableCell>{name}</TableCell>
-            </TableRow>
-            <TableRow
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell>Learing Rate</TableCell>
-              <TableCell>{learning['learning_rate']}</TableCell>
-            </TableRow>
-            <TableRow
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell>Max Depth</TableCell>
-              <TableCell>{learning['max_depth']}</TableCell>
-            </TableRow>
-            <TableRow
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell>Estimators</TableCell>
-              <TableCell>{learning['n_estimators']}</TableCell>
-            </TableRow>
-            <TableRow
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell>R2</TableCell>
-              <TableCell>{r2}</TableCell>
-            </TableRow>
-            <TableRow
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell>Rmse</TableCell>
-              <TableCell>{rmse}</TableCell>
-            </TableRow>
+              <TableRow>
+                <TableCell>Name</TableCell>
+                <TableCell>{name}</TableCell>
+              </TableRow>
+              {tableData.map((row, index) => (
+                <TableRow key={index}>
+                  <TableCell>{Object.values(row)[0]}</TableCell>
+                  <TableCell>{Object.values(row)[1]}</TableCell>
+                </TableRow>
+              ))}
+              <TableRow>
+                <TableCell>R2</TableCell>
+                <TableCell>{r2}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>RMSE</TableCell>
+                <TableCell>{rmse}</TableCell>
+              </TableRow>
         </TableBody>
       </Table>
     </TableContainer>
