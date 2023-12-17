@@ -7,6 +7,8 @@ from schema import Predict, GHI, Models, ParamsAndResults
 from fastapi.middleware.cors import CORSMiddleware
 from prometheus_fastapi_instrumentator import Instrumentator
 
+with open('models/best_model.txt', 'r', encoding='utf-8') as file: BEST_MODEL = file.read()
+
 app=FastAPI()
 app.add_middleware(
     CORSMiddleware,
@@ -31,9 +33,9 @@ async def root():
 description="this function returns the best model's results", response_model=ParamsAndResults)
 async def best_results():
     """function to list results of best model""" 
-    params = pd.read_csv('src/models/params/xgb_params.csv', delimiter = ',')
+    params = pd.read_csv(f'src/models/params/{BEST_MODEL}_params.csv', delimiter = ',')
     dizionario_valori = params.iloc[0].to_dict()
-    name = "XgBooster"
+    name = BEST_MODEL.upper()
     params = dizionario_valori
     with open('models/best_metrics.metrics', 'r', encoding='utf-8') as file:
         prima_riga = str(file.readline().strip())
