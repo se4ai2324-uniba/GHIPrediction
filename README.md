@@ -1,10 +1,3 @@
-![Static Badge](https://img.shields.io/badge/Pytest-green?logo=pytest)
-![Static Badge](https://img.shields.io/badge/Docker-blue?logo=docker)
-![Static Badge](https://img.shields.io/badge/AWS-%23232f3e?logo=amazon)
-![Static Badge](https://img.shields.io/badge/Prometheus-white?logo=prometheus)
-![Static Badge](https://img.shields.io/badge/Grafana-black?logo=grafana)
-[![Better Stack Badge](https://uptime.betterstack.com/status-badges/v2/monitor/yt2d.svg)](https://uptime.betterstack.com/?utm_source=status_badge)
-
 ---
 language:
 - en
@@ -25,6 +18,13 @@ metrics:
 - R2
 - RMSE
 ---
+
+![Static Badge](https://img.shields.io/badge/Pytest-green?logo=pytest)
+![Static Badge](https://img.shields.io/badge/Docker-blue?logo=docker)
+![Static Badge](https://img.shields.io/badge/AWS-%23232f3e?logo=amazon)
+![Static Badge](https://img.shields.io/badge/Prometheus-white?logo=prometheus)
+![Static Badge](https://img.shields.io/badge/Grafana-black?logo=grafana)
+[![Better Stack Badge](https://uptime.betterstack.com/status-badges/v2/monitor/yt2d.svg)](https://uptime.betterstack.com/?utm_source=status_badge)
 
 # GHI PREDICTION
 ## System Description:
