@@ -1,3 +1,10 @@
+![Static Badge](https://img.shields.io/badge/Pytest-green?logo=pytest)
+![Static Badge](https://img.shields.io/badge/Docker-blue?logo=docker)
+![Static Badge](https://img.shields.io/badge/AWS-%23232f3e?logo=amazon)
+![Static Badge](https://img.shields.io/badge/Prometheus-white?logo=prometheus)
+![Static Badge](https://img.shields.io/badge/Grafana-black?logo=grafana)
+[![Better Stack Badge](https://uptime.betterstack.com/status-badges/v2/monitor/yt2d.svg)](https://uptime.betterstack.com/?utm_source=status_badge)
+
 ---
 language:
 - en
@@ -18,13 +25,6 @@ metrics:
 - R2
 - RMSE
 ---
-
-![Static Badge](https://img.shields.io/badge/Pytest-green?logo=pytest)
-![Static Badge](https://img.shields.io/badge/Docker-blue?logo=docker)
-![Static Badge](https://img.shields.io/badge/AWS-%23232f3e?logo=amazon)
-![Static Badge](https://img.shields.io/badge/Prometheus-white?logo=prometheus)
-![Static Badge](https://img.shields.io/badge/Grafana-black?logo=grafana)
-[![Better Stack Badge](https://uptime.betterstack.com/status-badges/v2/monitor/yt2d.svg)](https://uptime.betterstack.com/?utm_source=status_badge)
 
 # GHI PREDICTION
 ## System Description:
@@ -157,6 +157,8 @@ Project Organization
     │   └── raw            <- The original, immutable data dump.
     │
     ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
+    │ 
+    ├── ghi-predictor      <- Frontend application
     │
     ├── models             <- Trained and serialized models, model predictions, or model summaries
     │
@@ -167,25 +169,44 @@ Project Organization
     ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
     │
     ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures        <- Generated graphics and figures to be used in reporting
+    │   ├── figures        <- Generated graphics and figures to be used in reporting
+    │   ├── pylint         <- Generated report for code quality assurance
+    │   └── codcarbon      <- Generated reports for codecarbon
     │
     ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
     │                         generated with `pip freeze > requirements.txt`
+    ├── requirements_docker.txt   <- The requirements file for reproducing the docker analysis environment
     │
     ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
     ├── src                <- Source code for use in this project.
     │   ├── __init__.py    <- Makes src a Python module
     │   │
+    │   ├── app            <- Scripts to generate APIs
+    │   │   ├── api.py
+    │   │   ├── schema.py
+    │   │   └── test.py
     │   ├── data           <- Scripts to download or generate data
-    │   │   └── make_dataset.py
+    │   │   ├── gx_test.py
+    │   │   ├── make_dataset.py
+    │   │   ├── preprocessing.py
+    │   │   └── split_dataset.py
     │   │
     │   ├── features       <- Scripts to turn raw data into features for modeling
     │   │   └── build_features.py
     │   │
     │   ├── models         <- Scripts to train models and then use trained models to make
     │   │   │                 predictions
-    │   │   ├── predict_model.py
-    │   │   └── train_model.py
+    │   │   ├── compare.py
+    │   │   ├── knr.py
+    │   │   ├── linear_regressor.py
+    │   │   ├── random_forest_regressor.py
+    │   │   ├── train_model.py       
+    │   │   └── xgbooster.py
+    │   │ 
+    │   ├── test          <- Scripts to test modules
+    │   │   ├── compare_test.py
+    │   │   ├── preprocessing_test.py  
+    │   │   └── training_test.py
     │   │
     │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
     │       └── visualize.py
