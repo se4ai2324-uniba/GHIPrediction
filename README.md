@@ -119,7 +119,7 @@ We have integrated Code Carbon to monitor and assess the environmental impact of
 
 ## Deployment & Monitoring
 * **AWS deployment (nginx)** \
- Our app is up and running at [15.161.48.19](15.161.48.19). It has been deployed using [AWS](https://aws.amazon.com/). \
+ Our app is up and running at [15.161.48.19](http://15.161.48.19). It has been deployed using [AWS](https://aws.amazon.com/). \
 The deployment involves a Linux machine hosted on a European server with 2GB of RAM (extended to 4GB using local storage) and 28GB of storage. \
 We utilize [nginx](https://www.nginx.com/) for serving the application. It acts as a proxy server between the user and our application.
 
