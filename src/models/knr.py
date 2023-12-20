@@ -1,9 +1,6 @@
 """module to implement training for k-nearest regressor"""
-import csv
 import pandas as pd
 from sklearn.neighbors import KNeighborsRegressor
-import joblib
-from sklearn.preprocessing import RobustScaler
 from train_model import best_hyper, grid_log, save_metrics
 from train_model import save_model, stampa, predict_and_results, use_split
 from codecarbon import EmissionsTracker
