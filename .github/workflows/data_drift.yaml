@@ -1,0 +1,19 @@
+name: Alibi-check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  alibi-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      
+      name: Checkout repository
+        uses: actions/checkout@v4
+
+      name: Install requirements
+        run: pip install -r requirements_actions.txt
+
+      name: Run your commands
+        run: python src/models/alibi/alibi.py

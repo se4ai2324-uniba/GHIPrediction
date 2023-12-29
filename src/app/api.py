@@ -1,6 +1,7 @@
 """module for APIs"""
 import joblib
 import uvicorn
+import csv
 import pandas as pd
 from fastapi import FastAPI, status
 from schema import Predict, GHI, Models, ParamsAndResults
@@ -51,6 +52,10 @@ description="this function returns the ghi prediction from user input", response
 async def predict_ghi(request: Predict)->GHI:
     """function to predict GHI with user input""" 
     data = [[request.temperature, request.dni, request.humidity]]
+    csv_file_path = 'data/external/user_requests.csv'
+    with open(csv_file_path, mode='a') as file_csv:
+        writer = csv.writer(file_csv)
+        writer.writerow(data[0])
     ghi = predict(data)
     response=GHI(predicted_GHI=ghi.item())
     return response
