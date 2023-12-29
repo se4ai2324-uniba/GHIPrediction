@@ -12,12 +12,14 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install requirements
-        run: pip install -r requirements_actions.txt
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements_actions.txt
 
-      - name: Run your commands
+      - name: Run Alibi module
         run: python src/models/alibi/alibi.py
       
-      - name: Configura git
+      - name: Configure git
         run: |
           git config --global user.email "f.didio2@studenti.uniba.it"
           git config --global user.name "Fra3005"
