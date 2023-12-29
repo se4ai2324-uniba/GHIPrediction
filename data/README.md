@@ -8,7 +8,7 @@ Temperature, Global Horizontal Irradiance (GHI) and Direct Normal Irradiance (DN
 
 
 ## Data Source:
-Data come from the [**National Solar Radiation Data Base**](https://nsrdb.nrel.gov/). \
+Data come from the [**National Solar Radiation Data Base**](https://nsrdb.nrel.gov/data-viewer). \
 The NSRDB ([Sengupta et al., 2018](https://doi.org/10.1016/j.rser.2018.03.003)) is a high temporal and spatial resolution dataset consisting of the three most widely used measurements of solar radiation—*global horizontal, direct normal, and diffuse horizontal irradiance*—as well as other meteorological data. 
 
 
