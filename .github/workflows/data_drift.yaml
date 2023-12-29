@@ -16,6 +16,23 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements_actions.txt
 
+      - uses: iterative/setup-dvc@v1
+      
+      - name: Pull data with DVC
+        env:
+          GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS }}
+        run: |
+          dvc pull
+
+      - name: Run make_dataset
+        run: python src/data/make_dataset.py
+      
+      - name: Run preprocessing
+        run: python src/data/preprocessing.py
+
+      - name: Run split_dataset
+        run: python src/data/split_dataset.py
+
       - name: Run Alibi module
         run: python src/models/alibi/alibi.py
       
