@@ -1,0 +1,2 @@
+['remote "myremote"']
+    gdrive_service_account_json_file_path = ../ghi-prediction-6869d952fb04.json
