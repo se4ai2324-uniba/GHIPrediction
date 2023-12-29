@@ -8,22 +8,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      
-      name: Checkout repository
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      name: Install requirements
+      - name: Install requirements
         run: pip install -r requirements_actions.txt
 
-      name: Run your commands
+      - name: Run your commands
         run: python src/models/alibi/alibi.py
       
-      name: Configura git
+      - name: Configura git
         run: |
           git config --global user.email "f.didio2@studenti.uniba.it"
           git config --global user.name "Fra3005"
       
-      name: Add, commit and push changes
+      - name: Add, commit and push changes
         run: |
           git add .
           git commit -m "Update drift_results"
