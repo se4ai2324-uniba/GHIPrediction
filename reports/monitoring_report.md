@@ -19,10 +19,10 @@ Grafana allows us to customize and explore the metrics dashboards to gain insigh
 ![grafana](https://github.com/se4ai2324-uniba/GHIPrediction/assets/48125720/b3606fd2-508c-479d-b715-f1c88840abec)
 
 In this dashboard, we show some of the metrics that Grafana can handle, such as: 	
-* Response size	    -> to get the dimensions in bytes of every request
-* Request duration	-> to show how the duration of the requests changes over time also depending on the number of requests
-* Scrape duration   -> to show how the scrape duration changes over time also depending on the number of requests
-* Total requests	-> Total number of requests over time (in combination with scrape and request duration)
+* Response size	    -> to get the dimensions in bytes of every request;
+* Request duration	-> to show how the duration of the requests changes over time also depending on the number of requests;
+* Scrape duration   -> to show how the scrape duration changes over time also depending on the number of requests;
+* Total requests	-> total number of requests over time (in combination with scrape and request duration);
 
  ## Better Up Time
  In addition to Prometheus and Grafana, we also use a third-party service that allows us to ensure the continuous availability and performance monitoring of our application, Better Up Time.
