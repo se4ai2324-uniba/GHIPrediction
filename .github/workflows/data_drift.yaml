@@ -17,3 +17,14 @@ jobs:
 
       name: Run your commands
         run: python src/models/alibi/alibi.py
+      
+      name: Configura git
+        run: |
+          git config --global user.email "f.didio2@studenti.uniba.it"
+          git config --global user.name "Fra3005"
+      
+      name: Add, commit and push changes
+        run: |
+          git add .
+          git commit -m "Update drift_results"
+          git push
