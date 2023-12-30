@@ -11,6 +11,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
       - name: Install requirements
         run: |
           python -m pip install --upgrade pip
@@ -35,14 +40,3 @@ jobs:
 
       - name: Run Alibi module
         run: python src/models/alibi/alibi.py
-      
-      - name: Configure git
-        run: |
-          git config --global user.email "f.didio2@studenti.uniba.it"
-          git config --global user.name "Fra3005"
-      
-      - name: Add, commit and push changes
-        run: |
-          git add .
-          git commit -m "Update drift_results"
-          git push
