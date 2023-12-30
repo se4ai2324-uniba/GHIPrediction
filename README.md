@@ -155,8 +155,15 @@ Project Organization
     ├── LICENSE
     ├── Makefile           <- Makefile with commands like `make data` or `make train`
     ├── README.md          <- The top-level README for developers using this project.
+    ├── github             <- folder containing all the github actions
+    │   ├── data_drift.yaml        
+    │   ├── tests.yaml 
+    │   ├── pipeline.yaml
+    │   └── pylint_module.yaml     
     ├── data
     │   ├── external       <- Data from third-party sources.
+    │   │   ├── user_requestes.csv
+    │   │   └── drift_results.txt
     │   ├── interim        <- Intermediate data that has been transformed.
     │   ├── processed      <- The final, canonical data sets for modeling.
     │   └── raw            <- The original, immutable data dump.
@@ -176,6 +183,8 @@ Project Organization
     ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
     │   ├── figures        <- Generated graphics and figures to be used in reporting
     │   ├── pylint         <- Generated report for code quality assurance
+    │   ├── monitor_report <- Generated report for monitoring
+    │   ├── report_locust  <- Generated report for locust
     │   └── codcarbon      <- Generated reports for codecarbon
     │
     ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
@@ -201,6 +210,8 @@ Project Organization
     │   │
     │   ├── models         <- Scripts to train models and then use trained models to make
     │   │   │                 predictions
+    │   │   ├── alibi      <- Script to check data drifting
+    │   │   │   └── alibi.py
     │   │   ├── compare.py
     │   │   ├── knr.py
     │   │   ├── linear_regressor.py
