@@ -5,8 +5,12 @@ import csv
 from alibi_detect.cd import TabularDrift
 sys.path.insert(0, "src/models/")
 from train_model import use_split
+from datetime import datetime
 
-def alibi_detector(x_test, count):
+
+def alibi_detector(x_test):
+    now = datetime.now()
+    formatted_datetime = now.strftime("%Y-%m-%d %H:%M:%S")
     #Alibi Detector
     x_train, _ , _, _ = use_split('split_train', 'split_test')
     cat = ['Temperature','DNI','Relative Humidity']
@@ -18,33 +22,30 @@ def alibi_detector(x_test, count):
 
     # Visualizzazione dei risultati
     labels = ['No!', 'Yes!']
-    print('Drift? {}'.format(labels[drift_result['data']['is_drift']]), "Index:", count)
-    string = str(labels[drift_result['data']['is_drift']]) + "Index:" + str(count) + '\n'
+    print('Drift? {}'.format(labels[drift_result['data']['is_drift']]))
+    string = str(labels[drift_result['data']['is_drift']]) + '\n'
     with open('data/external/drift_results.txt', 'a') as file:
-    # Scrivi la nuova stringa nel file
-        file.write(string)
-    for f in range(cd.n_features):
-        fname = cat[f]
-        stat_val, p_val = drift_result['data']['distance'][f], drift_result['data']['p_val'][f]
-        print(f'{fname} -- K-S {stat_val:.3f} -- p-value {p_val:.3f}')
-    print(drift_result['data']['threshold'])
+        file.write('\n')
+        file.write("Timestamp:" + str(formatted_datetime))
+        file.write('\n')
+        file.write("Drift:" + string)
+        for f in range(cd.n_features):
+            fname = cat[f]
+            stat_val, p_val = drift_result['data']['distance'][f], drift_result['data']['p_val'][f]
+            print(f'{fname} -- K-S {stat_val:.3f} -- p-value {p_val:.3f}')
+            file.write(f'{fname} -- K-S {stat_val:.3f} -- p-value {p_val:.3f}')
+            file.write('\n')
+    #print(drift_result['data']['threshold'])
 
 
-# Percorso del file CSV
 percorso_file_csv = 'data/external/user_requests.csv'
 
-# Leggi il CSV in un DataFrame
 df = pd.read_csv(percorso_file_csv)
 test = df.rename(columns={'0':'Temperature', '1':'DNI', '2': 'Relative Humidity'})
 scaler = joblib.load('models/scaler.pkl')
 transformed = scaler.transform(test)
 
-# Itera attraverso le righe del DataFrame e applica la tua funzione
-count = 0
-for riga in transformed:
-    riga = riga.reshape((1, -1))
-    count += 1
-    alibi_detector(riga, count)
+alibi_detector(transformed)
 
 '''
 Drift? No!

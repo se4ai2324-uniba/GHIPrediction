@@ -1,0 +1,11 @@
+Timestamp:2023-12-30 10:33:34
+Drift:No!
+Temperature -- K-S 0.499 -- p-value 0.503
+DNI -- K-S 0.668 -- p-value 0.221
+Relative Humidity -- K-S 0.795 -- p-value 0.084
+
+Timestamp:2023-12-30 10:34:17
+Drift:No!
+Temperature -- K-S 0.499 -- p-value 0.503
+DNI -- K-S 0.668 -- p-value 0.221
+Relative Humidity -- K-S 0.795 -- p-value 0.084
