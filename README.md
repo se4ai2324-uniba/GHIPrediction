@@ -82,7 +82,7 @@ You can check the code quality with the command:
 pylint *path_of_module\folder_you_want_to_check* 
 ```
 
-## APIs
+## APIs (local)
 The project incorporates also a module that implements a set of APIs. \
 If you want to check them out you can run the [uvicorn](https://uvicorn.org) server just by running the python module _api.py_ with the command: 
 ```
@@ -97,8 +97,9 @@ As for the function within the project, also the APIs have been tested with [pyt
 
 ## Orchestration
 Our project includes a *dockerfile* and a *docker-compose.yaml*. \
-Our initial step involved creating a straightforward Dockerfile, enabling the generation of an image within a Docker container. \
-After this, we developed a Docker Compose file to serve as a services orchestrator, managing our current container and any future containers.
+Our configuration involved creating a straightforward Dockerfile, enabling the generation of an image within a Docker container. \
+Then another Docker container has been generated to handle the front-end of the application.
+We also developed a Docker Compose file to serve as a services orchestrator, managing our current container and any future containers.
 
 To create the orchestrator you can use the command: 
 ```
@@ -120,7 +121,7 @@ We have integrated Code Carbon to monitor and assess the environmental impact of
 
 ## Deployment & Monitoring
 * **AWS deployment (nginx)** \
- Our app is up and running at [15.161.48.19](http://15.161.48.19). It has been deployed using [AWS](https://aws.amazon.com/). \
+Our app is up and running at [15.161.48.19](http://15.161.48.19). It has been deployed using [AWS](https://aws.amazon.com/). \
 The deployment involves a Linux machine hosted on a European server with 2GB of RAM (extended to 4GB using local storage) and 28GB of storage. \
 We utilize [nginx](https://www.nginx.com/) for serving the application. It acts as a proxy server between the user and our application.
 
